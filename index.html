@@ -1158,7 +1158,7 @@ function startLessonTimer(cid,lid){
     const mm=String(Math.floor(rem/60)).padStart(2,'0');
     const ss=String(rem%60).padStart(2,'0');
     if(tEl)tEl.textContent=`${mm}:${ss}`;
-    if(bEl)bEl.style.width=`${Math.min(100,(S.timerSec/totalSec)*100}%`;
+    if(bEl)bEl.style.width=`${Math.min(100,(S.timerSec/totalSec)*100)}%`;
     if(rem===0){clearInterval(timerInterval);completeLesson(cid,lid);}
   },1000);
 }
