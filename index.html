@@ -384,38 +384,78 @@ tr:hover td{background:var(--surf2)}
 .toast.vis{transform:translateY(0)}
 .toast.ok{border-left:3px solid #4ade80}
 .toast.err{border-left:3px solid #f87171}
-  /* ===== MOBILE RESPONSIVE ===== */
+ /* ===== MOBILE RESPONSIVE ===== */
 @media(max-width:768px){
-  html,body{height:auto;overflow:auto;}
-  .app-shell{flex-direction:column;height:auto;min-height:100vh;}
-  .left-panel{width:100%;min-height:220px;padding:24px 20px 20px;}
-  .right-panel{width:100%;min-height:100vh;padding:32px 20px;}
-  .auth-box{max-width:100%;padding:0;}
+  html,body{height:auto;overflow-x:hidden;}
+  .app-shell{flex-direction:column;height:auto;min-height:100vh;overflow-x:hidden;}
+
+  /* LOGIN PAGE — stack panels, hide left on small screens */
+  .left-panel{display:none;}
+  .right-panel{width:100%;min-height:100vh;padding:28px 20px;overflow-y:auto;}
+  .auth-box{max-width:100%;width:100%;padding:0;}
   .login-tabs{gap:4px;}
-  .login-tab{font-size:12px;padding:8px 12px;}
+  .login-tab{font-size:12px;padding:8px 10px;}
   .demo-grid{grid-template-columns:1fr 1fr;gap:8px;}
-  .demo-chip{font-size:12px;padding:8px 10px;}
-  .sidebar{width:100%;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px 16px;gap:8px;}
-  .sidebar-brand{width:100%;margin-bottom:8px;}
-  .nav-items{flex-direction:row;flex-wrap:wrap;gap:4px;width:100%;}
-  .nav-item{padding:6px 10px;font-size:12px;}
-  .main-content{height:auto;overflow:visible;}
-  .content-area{padding:16px;}
+  .demo-chip{font-size:12px;padding:8px 10px;text-align:center;}
+
+  /* MAIN APP — sidebar goes to bottom nav */
+  .sidebar{
+    width:100%;
+    height:auto;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding:8px 12px;
+    position:fixed;
+    bottom:0;left:0;right:0;
+    z-index:100;
+    border-top:1px solid rgba(255,255,255,.1);
+    border-right:none;
+  }
+  .sidebar-brand{display:none;}
+  .sidebar-user{display:none;}
+  .nav-items{flex-direction:row;gap:0;width:100%;justify-content:space-around;}
+  .nav-item{
+    flex-direction:column;
+    align-items:center;
+    padding:6px 8px;
+    font-size:10px;
+    gap:3px;
+    flex:1;
+    white-space:nowrap;
+  }
+  .nav-item-icon{font-size:18px;}
+  .sidebar-foot{display:none;}
+
+  /* MAIN CONTENT — add padding so it clears the bottom nav */
+  .main-content{
+    width:100%;
+    height:auto;
+    min-height:calc(100vh - 60px);
+    padding-bottom:70px;
+    overflow-y:auto;
+  }
+  .content-area{padding:14px;}
+
+  /* LESSON PLAYER */
   .lesson-layout{flex-direction:column;}
-  .curriculum-panel{width:100%;max-height:240px;}
+  .curriculum-panel{width:100%;max-height:200px;overflow-y:auto;}
   .lesson-panel{width:100%;}
+
+  /* GRIDS */
   .stats-grid{grid-template-columns:1fr 1fr;}
   .course-grid{grid-template-columns:1fr;}
-  .cert-paper{padding:24px 16px;margin:0 8px;}
-  .cert-name{font-size:26px;}
-  .cert-sigs{flex-direction:column;gap:16px;}
+
+  /* CERTIFICATE */
+  .cert-paper{padding:20px 14px;margin:0 6px;}
+  .cert-name{font-size:22px;}
+  .cert-sigs{flex-direction:column;gap:14px;align-items:flex-start;}
 }
+
 @media(max-width:480px){
-  .left-panel{min-height:180px;padding:20px 16px;}
   .stats-grid{grid-template-columns:1fr;}
   .demo-grid{grid-template-columns:1fr 1fr;}
-  .login-tabs{gap:2px;}
-  .login-tab{font-size:11px;padding:6px 8px;}
+  .right-panel{padding:20px 16px;}
 }
 </style>
 </head>
