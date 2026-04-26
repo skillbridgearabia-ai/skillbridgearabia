@@ -1127,7 +1127,7 @@ function startLessonTimer(cid,lid){
   const vs=document.getElementById('vbox-state');
   
   // Lesson 1 of Barista — real YouTube video
-  if(cid==='barista' && lid==='l1'){
+  if(cid==='barista' && (lid==='l1' || lid==='l0')){
     if(vs) vs.innerHTML=`
       <div style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:8px;overflow:hidden;">
         <iframe 
