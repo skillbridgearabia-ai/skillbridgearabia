@@ -3,1389 +3,837 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillBridge Arabia — GCC Workforce Training Platform</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>SkillBridge Arabia — From Origin to Excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden}
-@media(max-width:768px){html,body{height:auto;overflow:auto;}}
-body{font-family:'Sora',sans-serif;background:#f8f7f3;color:#0c0c0a;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
-button{font-family:'Sora',sans-serif;cursor:pointer}
-input,select,textarea{font-family:'Sora',sans-serif}
 :root{
-  --ink:#0c0c0a;--ink2:#3a3830;--ink3:#7a7568;--ink4:#b5b0a5;
-  --bg:#f8f7f3;--surf:#fff;--surf2:#f3f2ed;--surf3:#ede9e2;
-  --gold:#c07d14;--gold-h:#a86b0e;--gold-l:#fdf5e8;--gold-m:#f0d4a0;--gold-b:#e8c070;
-  --sage:#2d6a52;--sage-h:#235440;--sage-l:#e8f4ef;--sage-m:#a8d4c0;
-  --terra:#c04a2c;--terra-l:#fdf0ec;
-  --sky:#2a6394;--sky-l:#e8f0f8;
-  --border:#e4e0d8;--border2:#d0ccc0;
-  --r:6px;--r2:10px;--r3:14px;
-  --sh:0 1px 3px rgba(0,0,0,.06);--sh2:0 2px 8px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.04);--sh3:0 8px 32px rgba(0,0,0,.1);
+  --gold:#B78A2A;
+  --gold-deep:#8C6315;
+  --gold-pale:#FBF5E6;
+  --gold-mid:#E8C97A;
+  --ink:#1A1714;
+  --ink-2:#3D3830;
+  --ink-3:#6B6560;
+  --ink-4:#A09890;
+  --cream:#FAFAF6;
+  --cream-2:#F3F0E8;
+  --cream-3:#EAE6DC;
+  --white:#FFFFFF;
+  --sage:#2D6A52;
+  --sage-pale:#EEF7F2;
+  --terra:#B84030;
+  --terra-pale:#FDF1EE;
+  --border:#DDD8CC;
+  --border-2:#C8C2B4;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --radius:8px;
+  --shadow:0 2px 12px rgba(26,23,20,.07);
+  --shadow-2:0 8px 32px rgba(26,23,20,.1);
 }
-/* AUTH */
-#auth{display:flex;height:100vh}
-.ap{width:44%;background:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:52px 48px;flex-shrink:0}
-.ap-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 30%,rgba(192,125,20,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(45,106,82,.15) 0%,transparent 60%)}
-.ap-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px}
-.ap>*{position:relative;z-index:1}
-.brand-wm{font-family:'Lora',serif;font-size:30px;color:#fff;letter-spacing:-.3px}
-.brand-wm em{color:var(--gold);font-style:italic}
-.brand-sub{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:6px;font-weight:500}
-.ah-quote{font-family:'Lora',serif;font-style:italic;font-size:32px;color:#fff;line-height:1.35;margin-bottom:32px;max-width:360px}
-.ah-quote span{color:var(--gold)}
-.flags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
-.flag-pill{display:flex;align-items:center;gap:6px;padding:5px 12px 5px 8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:24px;font-size:12px;color:rgba(255,255,255,.55);transition:all .2s}
-.flag-pill:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
-.flag-pill .f{font-size:16px}
-.auth-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
-.as-num{font-size:24px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:4px}
-.as-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);line-height:1.3}
-.afp{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 32px;overflow-y:auto;background:var(--surf)}
-.afw{width:100%;max-width:390px}
-.afw h2{font-family:'Lora',serif;font-size:26px;color:var(--ink);margin-bottom:4px;font-weight:600}
-.afw .lead{font-size:13px;color:var(--ink3);margin-bottom:28px}
-.role-sw{display:flex;background:var(--surf2);border:1px solid var(--border);border-radius:var(--r2);padding:3px;gap:3px;margin-bottom:24px}
-.rb{flex:1;padding:8px 10px;border:none;background:none;border-radius:8px;font-size:12px;font-weight:600;color:var(--ink3);transition:all .18s;letter-spacing:.01em}
-.rb.active{background:var(--surf);color:var(--ink);box-shadow:var(--sh)}
-.field{margin-bottom:15px}
-.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
-.field input,.field select{width:100%;padding:10px 13px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s;appearance:none}
-.field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(192,125,20,.1)}
-.field input::placeholder{color:var(--ink4)}
-.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7568' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn-primary{width:100%;padding:12px;background:var(--ink);color:#fff;border:none;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;transition:all .18s;margin-top:6px}
-.btn-primary:hover{background:var(--ink2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.auth-sw{text-align:center;margin-top:16px;font-size:13px;color:var(--ink3)}
-.auth-sw a{color:var(--gold);font-weight:600;cursor:pointer}
-.divider{display:flex;align-items:center;gap:12px;margin:20px 0}
-.divider hr{flex:1;border:none;border-top:1px solid var(--border)}
-.divider span{font-size:11px;color:var(--ink4);white-space:nowrap}
-.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.demo-chip{padding:8px 6px;border:1px solid var(--border);border-radius:var(--r);background:var(--surf2);font-size:11px;font-weight:600;color:var(--ink2);text-align:center;cursor:pointer;transition:all .15s}
-.demo-chip:hover{border-color:var(--gold-b);background:var(--gold-l);color:var(--gold)}
-/* APP SHELL */
-#app{display:none;height:100vh;flex-direction:row}
-.sidebar{width:230px;background:var(--ink);display:flex;flex-direction:column;flex-shrink:0;position:relative}
-.sidebar::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.02) 100%)}
-.sb-brand{padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
-.sb-wm{font-family:'Lora',serif;font-size:20px;color:#fff;line-height:1}
-.sb-wm em{color:var(--gold);font-style:italic}
-.sb-pl{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-top:5px;font-weight:600}
-.sb-user{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
-.sb-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-m),var(--gold-b));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--gold-h);flex-shrink:0}
-.sb-uname{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
-.sb-uemail{font-size:10px;color:rgba(255,255,255,.28);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;margin-top:1px}
-.sb-nav{flex:1;overflow-y:auto;padding:12px 0}
-.sb-nav::-webkit-scrollbar{width:3px}
-.sb-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.nav-sec{padding:14px 20px 5px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;font-weight:400;color:rgba(255,255,255,.42);cursor:pointer;transition:all .15s;position:relative}
-.nav-item:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.05)}
-.nav-item.active{color:#fff;background:rgba(192,125,20,.15);font-weight:600}
-.nav-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;background:var(--gold);border-radius:0 2px 2px 0}
-.nav-item .ni{font-size:15px;width:18px;text-align:center;flex-shrink:0}
-.nav-badge{margin-left:auto;background:var(--gold);color:#fff;font-size:9px;font-weight:800;padding:2px 6px;border-radius:10px}
-.sb-foot{padding:14px 20px;border-top:1px solid rgba(255,255,255,.06)}
-.btn-so{width:100%;padding:9px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);font-size:12px;font-weight:600;color:rgba(255,255,255,.3);cursor:pointer;transition:all .15s}
-.btn-so:hover{border-color:rgba(192,75,44,.5);color:#e88;background:rgba(192,75,44,.08)}
-.main-area{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.topbar{padding:0 28px;height:52px;background:var(--surf);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.topbar-title{font-size:13px;font-weight:700;letter-spacing:.03em;color:var(--ink)}
-.topbar-right{display:flex;align-items:center;gap:16px}
-.live-ind{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3)}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,.5);animation:lp 2s ease-in-out infinite}
-@keyframes lp{0%,100%{opacity:1;box-shadow:0 0 6px rgba(34,197,94,.5)}50%{opacity:.5;box-shadow:0 0 2px rgba(34,197,94,.2)}}
-.tb-time{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink4);letter-spacing:.05em}
-.page-body{flex:1;overflow-y:auto;background:var(--bg)}
-.page-body::-webkit-scrollbar{width:5px}
-.page-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-.page{display:none;animation:fi .2s ease}
-.page.active{display:block}
-@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-.pg-pad{padding:28px}
-.pg-title{font-family:'Lora',serif;font-size:28px;font-style:italic;color:var(--ink);margin-bottom:4px;line-height:1.2}
-.pg-sub{font-size:12px;color:var(--ink3);margin-bottom:24px;letter-spacing:.02em}
-/* COMPONENTS */
-.card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:22px;margin-bottom:16px}
-.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.card-title{font-size:14px;font-weight:700;color:var(--ink)}
-.card-sub{font-size:11px;color:var(--ink3);margin-top:2px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-.stat-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:20px 18px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s}
-.stat-card:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
-.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);border-radius:var(--r2) var(--r2) 0 0}
-.stat-card.sage::before{background:var(--sage)}
-.stat-card.sky::before{background:var(--sky)}
-.s-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
-.s-val{font-size:30px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em}
-.stat-card.gold .s-val{color:var(--gold)}
-.stat-card.sage .s-val{color:var(--sage)}
-.s-meta{font-size:11px;color:var(--ink3);margin-top:6px}
-.s-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:28px;opacity:.1}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.bdot{width:5px;height:5px;border-radius:50%;background:currentColor}
-.bg-gold{background:var(--gold-l);color:#8a5a0a}
-.bg-sage{background:var(--sage-l);color:var(--sage-h)}
-.bg-terra{background:var(--terra-l);color:var(--terra)}
-.bg-gray{background:var(--surf3);color:var(--ink3)}
-.bg-sky{background:var(--sky-l);color:var(--sky)}
-.prog-track{background:var(--surf3);border-radius:4px;height:5px;overflow:hidden}
-.prog-fill{height:100%;border-radius:4px;background:var(--gold);transition:width .6s cubic-bezier(.4,0,.2,1)}
-.prog-fill.sage{background:var(--sage)}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:none;border-radius:var(--r);font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:.03em;cursor:pointer;transition:all .15s;white-space:nowrap}
-.btn:active{transform:scale(.98)}
-.btn-sm{padding:5px 12px;font-size:11px}
-.btn-xs{padding:4px 9px;font-size:10px}
-.btn-gold{background:var(--gold);color:#fff}
-.btn-gold:hover{background:var(--gold-h);box-shadow:0 2px 8px rgba(192,125,20,.3)}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{background:var(--ink2)}
-.btn-sage{background:var(--sage);color:#fff}
-.btn-sage:hover{background:var(--sage-h)}
-.btn-outline{background:none;border:1px solid var(--border2);color:var(--ink2)}
-.btn-outline:hover{background:var(--surf2);border-color:var(--ink2)}
-.btn-ghost{background:none;border:none;color:var(--ink3);padding:6px 10px}
-.btn-ghost:hover{color:var(--ink);background:var(--surf2);border-radius:var(--r)}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse}
-th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:10px 13px;text-align:left;border-bottom:2px solid var(--border);background:var(--surf2)}
-td{padding:12px 13px;font-size:13px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--surf2)}
-.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.search-input{padding:9px 13px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);font-family:'Sora',sans-serif;font-size:13px;color:var(--ink);outline:none;flex:1;min-width:180px;transition:border-color .15s}
-.search-input:focus{border-color:var(--gold)}
-.filter-sel{padding:9px 32px 9px 12px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);font-family:'Sora',sans-serif;font-size:12px;color:var(--ink2);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237a7568' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
-.empty{text-align:center;padding:52px 20px}
-.empty-icon{font-size:44px;opacity:.2;margin-bottom:14px}
-.empty-title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
-.empty-sub{font-size:13px;color:var(--ink3);margin-bottom:22px;line-height:1.5}
-.wb{background:var(--ink);border-radius:var(--r2);padding:28px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;position:relative;overflow:hidden}
-.wb-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 100% at 80% 50%,rgba(192,125,20,.18) 0%,transparent 65%)}
-.wb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:32px 32px}
-.wb-c{position:relative;z-index:1}
-.wb-title{font-family:'Lora',serif;font-size:22px;font-style:italic;color:#fff;margin-bottom:4px}
-.wb-sub{font-size:13px;color:rgba(255,255,255,.4)}
-.wb-kpi{text-align:right;position:relative;z-index:1}
-.wb-kpi .big{font-size:46px;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em}
-.wb-kpi .lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
-/* COURSE CATALOG */
-.tab-row{display:flex;gap:4px;margin-bottom:22px;background:var(--surf2);padding:4px;border-radius:var(--r2);border:1px solid var(--border);width:fit-content}
-.tab-btn{padding:7px 16px;background:none;border:none;border-radius:var(--r);font-size:12px;font-weight:600;color:var(--ink3);cursor:pointer;transition:all .15s}
-.tab-btn.active{background:var(--surf);color:var(--ink);box-shadow:var(--sh)}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.cat-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;cursor:pointer;transition:all .2s;display:flex;flex-direction:column}
-.cat-card:hover{border-color:var(--gold-b);box-shadow:var(--sh3);transform:translateY(-3px)}
-.cc-hero{height:140px;background:linear-gradient(135deg,#1a1208 0%,#2d1f08 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cc-hero-icon{font-size:52px;opacity:.9;filter:drop-shadow(0 4px 16px rgba(0,0,0,.4))}
-.cc-hero-badge{position:absolute;top:10px;right:10px}
-.cc-hero-pct{position:absolute;bottom:10px;left:12px;right:12px}
-.cc-body{padding:18px;flex:1;display:flex;flex-direction:column}
-.cc-track{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.cc-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3}
-.cc-desc{font-size:12px;color:var(--ink3);line-height:1.6;flex:1}
-.cc-foot{padding:14px 18px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
-.cc-meta{display:flex;gap:12px}
-.cc-mi{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--ink3)}
-/* PLAYER */
-#player-view{display:none;height:calc(100vh - 52px);flex-direction:column}
-#player-view.open{display:flex}
-.player-topbar{padding:0 24px;height:52px;background:var(--ink);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.ptb-left{display:flex;align-items:center;gap:14px}
-.ptb-back{display:flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);font-size:12px;font-weight:600;color:rgba(255,255,255,.7);cursor:pointer;transition:all .15s}
-.ptb-back:hover{background:rgba(255,255,255,.14);color:#fff}
-.ptb-cname{font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
-.ptb-right{display:flex;align-items:center;gap:12px}
-.ptb-prog-wrap{display:flex;align-items:center;gap:8px}
-.ptb-prog-label{font-size:11px;color:rgba(255,255,255,.4)}
-.ptb-prog-bar{width:120px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.ptb-prog-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s}
-.ptb-pct{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--gold)}
-.player-body{flex:1;display:flex;overflow:hidden}
-/* CURRICULUM SIDEBAR */
-.curr-side{width:360px;background:var(--surf);border-right:1px solid var(--border);overflow-y:auto;flex-shrink:0}
-.curr-side::-webkit-scrollbar{width:4px}
-.curr-side::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.curr-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);background:var(--surf2)}
-.curr-head-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
-.curr-head-meta{font-size:11px;color:var(--ink3)}
-.curr-sec-wrap{border-bottom:1px solid var(--border)}
-.curr-sec-title{padding:12px 20px 8px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);background:var(--surf2);position:sticky;top:0;z-index:1;border-bottom:1px solid var(--border)}
-.cl{display:flex;align-items:flex-start;gap:11px;padding:11px 20px;cursor:pointer;transition:all .15s;border-bottom:1px solid rgba(228,224,216,.5)}
-.cl:last-child{border-bottom:none}
-.cl:hover{background:var(--surf2)}
-.cl.active{background:var(--gold-l);border-left:3px solid var(--gold)}
-.cl.active .cl-title{color:var(--gold-h);font-weight:600}
-.cl.done .cl-dot{background:var(--sage-l);border-color:var(--sage-m);color:var(--sage)}
-.cl-dot{width:28px;height:28px;border-radius:50%;background:var(--surf2);border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all .15s;margin-top:1px}
-.cl.active .cl-dot{background:var(--gold-l);border-color:var(--gold-b)}
-.cl-info{flex:1;min-width:0}
-.cl-title{font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:2px}
-.cl-dur{font-size:10px;color:var(--ink3);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.cl-preview-tag{background:var(--sky-l);color:var(--sky);font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px}
-.cl-exam-tag{background:var(--gold-l);color:var(--gold-h);font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px}
-/* LESSON AREA */
-.lesson-area{flex:1;overflow-y:auto;display:flex;flex-direction:column;background:var(--bg)}
-.lesson-area::-webkit-scrollbar{width:5px}
-.lesson-area::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-/* VIDEO BOX */
-.vbox{background:var(--ink);min-height:280px;max-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
-.vbox-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(192,125,20,.12) 0%,transparent 70%)}
-.vbox-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:24px 24px}
-.vbox-icon{font-size:60px;position:relative;z-index:1;filter:drop-shadow(0 4px 20px rgba(0,0,0,.4));animation:br 3s ease-in-out infinite}
-@keyframes br{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.vbox-title{font-family:'Lora',serif;font-size:20px;font-style:italic;color:#fff;margin:12px 0 4px;position:relative;z-index:1;text-align:center;padding:0 40px;max-width:600px;line-height:1.3}
-.vbox-dur{font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:1}
-.vbox-play{position:relative;z-index:1;margin-top:16px;width:52px;height:52px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;transition:all .2s}
-.vbox-play:hover{background:var(--gold-h);transform:scale(1.08);box-shadow:0 6px 20px rgba(192,125,20,.4)}
-.vbox-playing{position:relative;z-index:1;margin-top:10px;text-align:center}
-.vbox-timer{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--gold);letter-spacing:.04em;line-height:1}
-.vbox-timer-label{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
-.vbox-done{position:relative;z-index:1;margin-top:14px;display:flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(45,106,82,.2);border:1px solid rgba(168,212,192,.3);border-radius:6px;font-size:13px;color:#a8d4c0;font-weight:600}
-.vbox-pbar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08)}
-.vbox-pbar-fill{height:100%;background:var(--gold);transition:width .5s linear}
-/* LESSON CONTENT */
-.lca{padding:28px 32px;flex:1}
-.lca-title{font-family:'Lora',serif;font-size:21px;color:var(--ink);margin-bottom:8px;line-height:1.3}
-.lca-meta{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border)}
-.lca-mi{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--ink3)}
-.lca-body{font-size:14px;color:var(--ink2);line-height:1.82;margin-bottom:20px}
-.lca-body p{margin-bottom:13px}
-.lca-body ul{padding-left:22px;margin-bottom:13px}
-.lca-body li{padding:3px 0;color:var(--ink2)}
-.lca-body strong{color:var(--ink);font-weight:700}
-.lca-note{background:var(--gold-l);border:1px solid var(--gold-b);border-radius:var(--r);padding:13px 16px;margin-bottom:18px;font-size:13px;color:var(--ink2);line-height:1.6;border-left:3px solid var(--gold)}
-.lca-note::before{content:'💡  '}
-.lesson-nav-row{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-top:1px solid var(--border);background:var(--surf);flex-shrink:0}
-/* QUIZ */
-.quiz-area{padding:32px;flex:1}
-.quiz-eyebrow{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.quiz-h1{font-family:'Lora',serif;font-size:22px;color:var(--ink);margin-bottom:4px}
-.quiz-desc{font-size:13px;color:var(--ink3);line-height:1.6;margin-bottom:24px}
-.qprog{display:flex;align-items:center;gap:10px;margin-bottom:26px;padding:12px 16px;background:var(--surf);border-radius:var(--r);border:1px solid var(--border)}
-.qprog-label{font-size:12px;color:var(--ink3)}
-.qprog-dots{display:flex;gap:6px;margin-left:auto}
-.qdot{width:10px;height:10px;border-radius:50%;background:var(--border2);transition:all .2s}
-.qdot.done{background:var(--sage)}
-.qdot.current{background:var(--gold);box-shadow:0 0 0 3px var(--gold-l)}
-.qdot.wrong{background:var(--terra)}
-.quiz-q-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
-.quiz-q{font-size:16px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:18px}
-.quiz-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-.qopt{display:flex;align-items:center;gap:13px;padding:13px 18px;border:1.5px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .15s;font-size:14px;color:var(--ink2)}
-.qopt:hover{border-color:var(--gold-b);background:var(--gold-l)}
-.qopt.sel{border-color:var(--gold);background:var(--gold-l);color:var(--ink);font-weight:500}
-.qopt.correct{border-color:var(--sage);background:var(--sage-l);color:var(--sage-h)}
-.qopt.wrong{border-color:var(--terra);background:var(--terra-l);color:var(--terra)}
-.qopt.locked{cursor:default}
-.ql{width:28px;height:28px;border-radius:50%;background:var(--surf3);border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:var(--ink3)}
-.qopt.correct .ql{background:var(--sage-l);border-color:var(--sage-m);color:var(--sage)}
-.qopt.wrong .ql{background:var(--terra-l);border-color:#f5c1b0;color:var(--terra)}
-.qfb{padding:13px 16px;border-radius:var(--r);font-size:13px;font-weight:500;line-height:1.6}
-.qfb.ok{background:var(--sage-l);color:var(--sage-h);border:1px solid var(--sage-m)}
-.qfb.fail{background:var(--terra-l);color:var(--terra);border:1px solid #f5c1b0}
-.quiz-result{text-align:center;padding:28px 20px}
-.qr-ring{width:110px;height:110px;border-radius:50%;background:var(--gold-l);border:4px solid var(--gold-b);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 18px}
-.qr-ring .score{font-size:30px;font-weight:800;color:var(--gold);line-height:1}
-.qr-ring .out{font-size:11px;color:var(--ink3)}
-.qr-msg{font-size:14px;color:var(--ink2);margin-bottom:18px;line-height:1.6}
-.qr-complete{background:var(--gold-l);border:1px solid var(--gold-b);border-radius:var(--r);padding:18px;margin-top:16px}
-.qr-complete .title{font-size:15px;font-weight:700;color:var(--gold-h);margin-bottom:4px}
-.qr-complete .sub{font-size:12px;color:var(--ink3)}
-/* CERT */
-.overlay{display:none;position:fixed;inset:0;background:rgba(12,12,10,.55);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
-.overlay.open{display:flex}
-.cert-paper{background:var(--surf);border-radius:var(--r2);padding:52px;width:740px;max-width:100%;position:relative;border:2px solid var(--border);box-shadow:0 24px 64px rgba(0,0,0,.22)}
-.cert-paper::before{content:'';position:absolute;inset:12px;border:1px solid var(--gold-m);border-radius:calc(var(--r2) - 2px);pointer-events:none}
-.cert-ey{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.cert-h1{font-family:'Lora',serif;font-size:34px;font-style:italic;color:var(--ink);margin-bottom:3px}
-.cert-origin{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:36px}
-.cert-presents{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
-.cert-name{font-family:'Lora',serif;font-size:44px;font-style:italic;color:var(--ink);border-bottom:2px solid var(--gold-b);padding-bottom:12px;margin-bottom:18px;line-height:1.1}
-.cert-body{font-size:14px;color:var(--ink2);line-height:1.75;max-width:520px;margin-bottom:40px}
-.cert-sigs{display:flex;justify-content:space-between;align-items:flex-end}
-.cert-sig-name{font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--ink);margin-bottom:6px}
-.cert-sig-line{width:120px;height:1px;background:var(--border2);margin-bottom:6px}
-.cert-sig-lbl{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3)}
-.cert-qr{width:66px;height:66px;background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--gold)}
-.cert-id{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink3);text-align:center;margin-top:5px}
-.cert-close{position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--surf2);border:1px solid var(--border);border-radius:50%;font-size:14px;color:var(--ink3);cursor:pointer;display:flex;align-items:center;justify-content:center}
-.cert-actions{display:flex;gap:10px;justify-content:center;margin-top:24px}
-/* AI COACH */
-.coach-layout{display:grid;grid-template-columns:1fr 280px;gap:18px;padding:28px}
-.chat-shell{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);display:flex;flex-direction:column;height:calc(100vh - 200px);min-height:400px}
-.chat-top{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--surf2);border-radius:var(--r2) var(--r2) 0 0}
-.chat-av{width:38px;height:38px;border-radius:50%;background:var(--gold-l);border:2px solid var(--gold-m);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.chat-av-name{font-size:13px;font-weight:700;color:var(--ink)}
-.chat-av-status{font-size:11px;color:var(--sage);display:flex;align-items:center;gap:4px}
-.chat-av-status::before{content:'';width:6px;height:6px;background:var(--sage);border-radius:50%;display:inline-block}
-.chat-msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px}
-.chat-msgs::-webkit-scrollbar{width:4px}
-.chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.mw{display:flex;flex-direction:column;max-width:74%}
-.mw.bot{align-self:flex-start}
-.mw.user{align-self:flex-end}
-.m-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
-.mw.user .m-lbl{text-align:right}
-.m-bubble{padding:12px 15px;font-size:13px;line-height:1.65;border-radius:var(--r2)}
-.mw.bot .m-bubble{background:var(--surf2);color:var(--ink);border:1px solid var(--border)}
-.mw.user .m-bubble{background:var(--gold);color:#fff}
-.typing-bub{display:flex;align-items:center;gap:4px;padding:12px 16px;background:var(--surf2);border:1px solid var(--border);border-radius:var(--r2);width:fit-content}
-.tdot{width:6px;height:6px;border-radius:50%;background:var(--ink3);animation:td 1.2s ease-in-out infinite}
-.tdot:nth-child(2){animation-delay:.2s}
-.tdot:nth-child(3){animation-delay:.4s}
-@keyframes td{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-5px);opacity:1}}
-.chat-in-row{padding:14px 20px;border-top:1px solid var(--border);display:flex;gap:8px;background:var(--surf2);border-radius:0 0 var(--r2) var(--r2)}
-.chat-in{flex:1;padding:10px 14px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);font-family:'Sora',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s}
-.chat-in:focus{border-color:var(--gold)}
-.chat-send{width:40px;height:40px;background:var(--gold);border:none;border-radius:var(--r);cursor:pointer;font-size:16px;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
-.chat-send:hover{background:var(--gold-h)}
-.phrase-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:18px;height:fit-content}
-.phrase-item{padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:padding .12s}
-.phrase-item:last-child{border-bottom:none}
-.phrase-item:hover{padding-left:6px}
-.phrase-ar{font-size:18px;font-weight:700;color:var(--ink);line-height:1.2}
-.phrase-lat{font-size:11px;color:var(--gold);font-weight:600;margin-top:2px}
-.phrase-en{font-size:11px;color:var(--ink3);margin-top:1px}
-/* BIZ CARDS */
-.biz-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:20px;transition:all .18s}
-.biz-card:hover{border-color:var(--gold-b);box-shadow:var(--sh2)}
-.biz-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.biz-av{width:44px;height:44px;border-radius:var(--r);background:var(--ink);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:800;font-size:14px;flex-shrink:0}
-.biz-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.biz-type{font-size:11px;color:var(--ink3)}
-.biz-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.bs-lbl{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:3px}
-.bs-val{font-size:20px;font-weight:800;color:var(--ink);line-height:1}
-.mini-chart{display:flex;align-items:flex-end;gap:4px;height:52px}
-.chart-b{flex:1;background:var(--gold-l);border:1px solid var(--gold-m);border-radius:2px 2px 0 0;min-height:4px;transition:background .15s;cursor:pointer}
-.chart-b:hover{background:var(--gold);border-color:var(--gold)}
-.chart-lbls{display:flex;justify-content:space-between;margin-top:6px}
-.chart-lbl{font-size:9px;color:var(--ink3)}
-.act-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
-.act-item:last-child{border-bottom:none}
-.act-dot{width:30px;height:30px;background:var(--gold-l);border:1px solid var(--gold-m);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
-.act-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px}
-.act-time{font-size:11px;color:var(--ink3)}
-.enroll-item{padding:14px 16px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;transition:border-color .15s}
-.enroll-item:hover{border-color:var(--gold-b)}
-.enroll-item:last-child{margin-bottom:0}
-.ei-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.ei-title{font-size:13px;font-weight:600;color:var(--ink)}
-.ei-pct{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--gold)}
-.ei-meta{font-size:11px;color:var(--ink3);margin-bottom:8px}
-.profile-form{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:28px 30px;max-width:560px}
-.pf-sec{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin:22px 0 14px;padding-top:18px;border-top:1px solid var(--border)}
-.pf-sec:first-child{margin-top:0;padding-top:0;border-top:none}
-.toast{position:fixed;bottom:22px;right:22px;background:var(--ink);color:#fff;padding:13px 18px;border-radius:var(--r);font-size:13px;line-height:1.4;z-index:999;transform:translateY(80px);transition:transform .28s cubic-bezier(.34,1.56,.64,1);max-width:320px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.toast.vis{transform:translateY(0)}
-.toast.ok{border-left:3px solid #4ade80}
-.toast.err{border-left:3px solid #f87171}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--sans);cursor:pointer}
+img{max-width:100%}
 
+/* UTILITIES */
+.container{max-width:1080px;margin:0 auto;padding:0 5%}
+.sec-tag{font-size:.7rem;font-weight:600;color:var(--gold-deep);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.section-rule{width:48px;height:2px;background:var(--gold);display:block;margin-bottom:20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;background:rgba(250,250,246,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:transform .3s}
+.nav-inner{max-width:1080px;margin:0 auto;width:100%;padding:0 5%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.25rem;color:var(--ink);font-weight:600;letter-spacing:.01em}
+.nav-logo em{color:var(--gold);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--ink-3);letter-spacing:.04em;transition:color .18s}
+.nav-links a:hover{color:var(--gold-deep)}
+.nav-cta{padding:8px 20px;background:var(--gold);color:var(--white);border-radius:var(--radius);font-size:.78rem;font-weight:600;letter-spacing:.03em;transition:all .18s}
+.nav-cta:hover{background:var(--gold-deep);transform:translateY(-1px)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* HERO */
+#hero{padding:120px 5% 80px;background:var(--white);position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-ornament{position:absolute;top:-80px;right:-60px;width:480px;height:480px;border-radius:50%;background:radial-gradient(ellipse,rgba(183,138,42,.08) 0%,transparent 68%);pointer-events:none}
+.hero-ornament-2{position:absolute;bottom:-120px;left:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(ellipse,rgba(45,106,82,.06) 0%,transparent 68%);pointer-events:none}
+.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
+.hero-left{}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;background:var(--gold-pale);border:1px solid var(--gold-mid);border-radius:24px;font-size:.7rem;font-weight:600;color:var(--gold-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:breathe 2.2s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.4rem);line-height:1.08;color:var(--ink);font-weight:700;margin-bottom:20px}
+h1 em{color:var(--gold);font-style:italic;display:block}
+h1 .muted{color:var(--ink-4);font-weight:400}
+.hero-body{font-size:1rem;color:var(--ink-3);line-height:1.8;max-width:480px;margin-bottom:32px;font-weight:300}
+.hero-body strong{color:var(--ink);font-weight:500}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;background:var(--gold);color:var(--white);border-radius:var(--radius);font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:all .2s;border:none}
+.btn-primary:hover{background:var(--gold-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(183,138,42,.35)}
+.btn-outline{padding:13px 28px;background:transparent;color:var(--ink-2);border:1.5px solid var(--border-2);border-radius:var(--radius);font-size:.9rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+.hero-right{display:flex;flex-direction:column;gap:14px}
+.hero-stat-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;position:relative;overflow:hidden}
+.hero-stat-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold)}
+.hsc-num{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:4px}
+.hsc-lbl{font-size:.82rem;color:var(--ink-3);line-height:1.5}
+.hsc-sub{font-size:.72rem;color:var(--ink-4);margin-top:3px}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:48px}.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
+
+/* MISSION BAND */
+#mission{padding:48px 5%;background:var(--ink);position:relative;overflow:hidden}
+.mission-stripe{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(183,138,42,.04) 120px,rgba(183,138,42,.04) 121px)}
+.mission-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.mission-inner p{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);font-style:italic;color:rgba(255,255,255,.9);line-height:1.5;font-weight:400}
+.mission-inner p em{color:var(--gold-mid);font-style:normal;font-weight:600}
+
+/* STORY */
+#story{padding:96px 5%;background:var(--white)}
+.story-wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.story-left h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--ink);line-height:1.2;margin-bottom:20px;font-weight:700}
+.story-left h2 em{color:var(--gold);font-style:italic}
+.story-left p{color:var(--ink-3);line-height:1.85;margin-bottom:16px;font-size:.95rem;font-weight:300}
+.story-left p strong{color:var(--ink);font-weight:500}
+.story-pull{margin-top:28px;padding:24px 28px;background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0}
+.story-pull q{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);line-height:1.65;display:block;margin-bottom:10px;quotes:none}
+.story-pull q::before,.story-pull q::after{content:none}
+.story-pull cite{font-size:.75rem;color:var(--gold-deep);letter-spacing:.06em;font-style:normal}
+.origin-cards{display:flex;flex-direction:column;gap:12px}
+.origin-card{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);transition:all .2s}
+.origin-card:hover{border-color:var(--gold-mid);background:var(--gold-pale);transform:translateX(5px)}
+.origin-flag{font-size:1.9rem;flex-shrink:0;line-height:1}
+.origin-info .oc{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.origin-info .od{font-size:.8rem;color:var(--ink-3);line-height:1.55}
+@media(max-width:768px){.story-wrap{grid-template-columns:1fr;gap:48px}}
+
+/* HOW */
+#how{padding:96px 5%;background:var(--cream-2)}
+.section-centre{text-align:center;max-width:600px;margin:0 auto 56px}
+.section-centre h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--ink);line-height:1.2;margin-bottom:12px;font-weight:700}
+.section-centre h2 em{color:var(--gold);font-style:italic}
+.section-centre p{color:var(--ink-3);font-size:.95rem;line-height:1.7;font-weight:300}
+.steps-row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+@media(max-width:700px){.steps-row{grid-template-columns:1fr}}
+.step{padding:36px 30px;border-right:1px solid var(--border)}
+.step:last-child{border-right:none}
+.step-n{font-family:var(--mono);font-size:.7rem;color:var(--gold-deep);letter-spacing:.15em;margin-bottom:16px}
+.step-icon{font-size:2rem;display:block;margin-bottom:14px}
+.step h3{font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:10px;line-height:1.3;font-weight:600}
+.step p{font-size:.85rem;color:var(--ink-3);line-height:1.75;font-weight:300}
+.step-time{display:inline-block;margin-top:16px;padding:4px 12px;background:var(--gold-pale);border-radius:20px;font-size:.7rem;font-weight:600;color:var(--gold-deep);letter-spacing:.04em}
+
+/* COURSES */
+#courses{padding:96px 5%;background:var(--white)}
+.courses-head{max-width:1080px;margin:0 auto 44px}
+.courses-head h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--ink);line-height:1.2;margin-top:10px;font-weight:700}
+.courses-head h2 em{color:var(--gold);font-style:italic}
+.courses-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.courses-grid{grid-template-columns:1fr}}
+.course-card{padding:28px 26px;border:1px solid var(--border);border-radius:var(--radius);background:var(--cream);transition:all .22s}
+.course-card:hover{border-color:var(--gold-mid);background:var(--white);transform:translateY(-3px);box-shadow:var(--shadow-2)}
+.cc-icon{font-size:2rem;display:block;margin-bottom:14px}
+.cc-track{font-size:.68rem;font-weight:600;color:var(--gold-deep);letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px}
+.course-card h3{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:9px;line-height:1.3;font-weight:600}
+.course-card p{font-size:.84rem;color:var(--ink-3);line-height:1.75;margin-bottom:18px;font-weight:300}
+.cc-meta{display:flex;flex-wrap:wrap;gap:14px}
+.cc-badge{font-size:.72rem;color:var(--ink-3);display:flex;align-items:center;gap:5px}
+
+/* FOR WHOM */
+#for{padding:96px 5%;background:var(--cream-2)}
+.for-grid{max-width:1080px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+@media(max-width:800px){.for-grid{grid-template-columns:1fr}}
+.for-card{padding:36px 30px;border-right:1px solid var(--border);display:flex;flex-direction:column}
+.for-card:last-child{border-right:none}
+.for-icon{font-size:1.6rem;width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0}
+.fi-a{background:var(--terra-pale)}
+.fi-b{background:var(--sage-pale)}
+.fi-c{background:var(--gold-pale)}
+.for-aud{font-size:.68rem;font-weight:600;color:var(--gold-deep);letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+.for-card h3{font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:10px;line-height:1.35;font-weight:600}
+.for-pain{font-size:.83rem;color:var(--terra);font-weight:500;padding-left:11px;border-left:2px solid var(--terra);margin-bottom:13px;line-height:1.5}
+.for-card p{font-size:.84rem;color:var(--ink-3);line-height:1.75;margin-bottom:14px;font-weight:300}
+.for-ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px;flex:1}
+.for-ul li{font-size:.82rem;color:var(--ink-3);display:flex;align-items:flex-start;gap:7px;font-weight:300}
+.for-ul li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px;font-size:.85rem}
+.for-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--gold-pale);color:var(--gold-deep);border-radius:var(--radius);font-size:.8rem;font-weight:600;transition:all .18s;width:fit-content;margin-top:auto}
+.for-cta:hover{background:var(--gold);color:var(--white)}
+
+/* VIDEO */
+#demo{padding:96px 5%;background:var(--ink);position:relative;overflow:hidden}
+.demo-warm{position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 50% 50%,rgba(183,138,42,.08) 0%,transparent 65%)}
+.demo-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.demo-inner .sec-tag{color:var(--gold-mid)}
+.demo-inner h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--white);margin:12px 0 14px;line-height:1.25;font-weight:700}
+.demo-inner h2 em{color:var(--gold-mid);font-style:italic}
+.demo-inner p{color:rgba(255,255,255,.45);font-size:.9rem;max-width:460px;margin:0 auto 36px;line-height:1.7;font-weight:300}
+.video-wrap{aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 32px 80px rgba(0,0,0,.5)}
+.video-wrap iframe{width:100%;height:100%;display:block}
+.video-caption{margin-top:16px;font-size:.8rem;color:rgba(255,255,255,.25);font-style:italic}
+
+/* PLATFORM */
+#platform{padding:96px 5%;background:var(--cream-2)}
+.platform-inner{max-width:1080px;margin:0 auto}
+.platform-inner .section-centre{text-align:left;margin-left:0;margin-right:0;max-width:100%}
+.platform-shell{margin-top:48px;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-2)}
+.pshell-bar{padding:12px 20px;background:var(--cream-3);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.pshell-dots{display:flex;gap:5px}
+.pshell-dots span{width:10px;height:10px;border-radius:50%}
+.d1{background:#FF5F57}.d2{background:#FEBC2E}.d3{background:#28C840}
+.pshell-url{font-family:var(--mono);font-size:.73rem;color:var(--ink-3);padding:3px 11px;background:var(--cream);border:1px solid var(--border);border-radius:5px}
+.pshell-link{font-size:.75rem;color:var(--gold-deep);font-weight:600;transition:color .15s}
+.pshell-link:hover{color:var(--gold)}
+.pshell-body{display:grid;grid-template-columns:200px 1fr;min-height:360px}
+@media(max-width:600px){.pshell-body{grid-template-columns:1fr}}
+.pshell-side{background:var(--cream);border-right:1px solid var(--border);padding:16px 0}
+.pshell-brand{padding:0 16px 14px;border-bottom:1px solid var(--border);margin-bottom:10px}
+.pshell-wm{font-family:var(--serif);font-size:.95rem;color:var(--ink);font-weight:600}
+.pshell-wm em{color:var(--gold);font-style:italic}
+.pshell-sub{font-size:.6rem;color:var(--ink-4);letter-spacing:.18em;text-transform:uppercase;margin-top:3px}
+.psn{padding:8px 16px;font-size:.79rem;color:var(--ink-3);display:flex;align-items:center;gap:8px;transition:all .14s;cursor:default;font-weight:400}
+.psn:hover,.psn.on{color:var(--ink);background:var(--cream-2)}
+.psn.on{color:var(--gold-deep);border-right:2px solid var(--gold);font-weight:500}
+.psn .ni{font-size:.85rem;width:14px;text-align:center;flex-shrink:0}
+.pshell-main{padding:20px 24px}
+.psm-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.psm-title{font-size:.8rem;font-weight:600;color:var(--ink);letter-spacing:.04em}
+.psm-live{display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--ink-3)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#22C55E;animation:breathe 2s ease-in-out infinite}
+.psm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.psm-stat{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.psm-sl{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.psm-sv{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1}
+.psm-stat.green .psm-sv{color:var(--sage)}
+.psm-courses{display:flex;flex-direction:column;gap:8px}
+.psm-course{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:11px 14px;display:flex;align-items:center;gap:12px}
+.psm-ci{font-size:1.2rem;flex-shrink:0}
+.psm-cn{font-size:.82rem;font-weight:500;color:var(--ink);margin-bottom:2px}
+.psm-cm{font-size:.7rem;color:var(--ink-3);font-weight:300}
+.psm-prog{width:80px;height:3px;background:var(--cream-3);border-radius:2px;overflow:hidden;flex-shrink:0}
+.psm-fill{height:100%;background:var(--gold);border-radius:2px}
+.platform-btns{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* TRACTION */
+#traction{padding:96px 5%;background:var(--white)}
+.traction-inner{max-width:1080px;margin:0 auto}
+.traction-inner h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--ink);line-height:1.2;margin:10px 0 0;font-weight:700}
+.traction-inner h2 em{color:var(--gold);font-style:italic}
+.traction-grid{margin-top:48px;display:grid;grid-template-columns:3fr 2fr;gap:40px;align-items:start}
+@media(max-width:768px){.traction-grid{grid-template-columns:1fr}}
+.trac-list{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--cream)}
+.trac-row{padding:14px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);transition:background .14s}
+.trac-row:last-child{border-bottom:none}
+.trac-row:hover{background:var(--gold-pale)}
+.trac-check{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0}
+.tc-done{background:var(--sage-pale);border:1px solid rgba(45,106,82,.25)}
+.tc-prog{background:var(--gold-pale);border:1px solid var(--gold-mid)}
+.trac-label{font-size:.84rem;color:var(--ink-2);flex:1;font-weight:400}
+.trac-pill{font-size:.67rem;font-weight:600;padding:3px 9px;border-radius:12px;white-space:nowrap;letter-spacing:.04em}
+.tp-live{background:var(--sage-pale);color:var(--sage)}
+.tp-act{background:var(--gold-pale);color:var(--gold-deep)}
+.tp-wip{background:var(--cream-3);color:var(--ink-3)}
+.trac-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tn-card{padding:22px 18px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.tn-big{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+.tn-lbl{font-size:.7rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;line-height:1.45}
+
+/* VISION */
+#vision{padding:72px 5%;background:var(--ink);position:relative;overflow:hidden}
+.vision-pattern{position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 26px,rgba(183,138,42,.05) 26px,rgba(183,138,42,.05) 27px)}
+.vision-in{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center}
+.vision-in h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);margin-bottom:14px;line-height:1.3;font-weight:700}
+.vision-in p{color:rgba(255,255,255,.55);font-size:.92rem;max-width:540px;margin:0 auto 28px;line-height:1.75;font-weight:300}
+.vtags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.vtag{padding:6px 16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:22px;font-size:.76rem;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.04em;transition:all .18s}
+.vtag:hover{background:rgba(183,138,42,.15);border-color:var(--gold-mid);color:var(--gold-mid)}
+
+/* CONTACT */
+#contact{padding:96px 5%;background:var(--cream-2)}
+.contact-wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
+.contact-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--ink);line-height:1.25;margin-bottom:14px;font-weight:700}
+.contact-left h2 em{color:var(--gold);font-style:italic}
+.contact-left p{color:var(--ink-3);line-height:1.8;margin-bottom:28px;font-size:.92rem;font-weight:300}
+.channels{display:flex;flex-direction:column;gap:10px}
+.channel{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);transition:all .18s}
+.channel:hover{border-color:var(--gold-mid);background:var(--gold-pale);transform:translateX(4px)}
+.ch-icon{font-size:1.2rem;flex-shrink:0}
+.ch-label{font-size:.67rem;font-weight:600;color:var(--gold-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.ch-val{font-size:.86rem;color:var(--ink);font-weight:500}
+.form-box{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;box-shadow:var(--shadow)}
+.ff{margin-bottom:14px}
+.ff label{display:block;font-size:.68rem;font-weight:600;color:var(--ink-3);letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+.ff input,.ff select,.ff textarea{width:100%;padding:9px 13px;background:var(--cream);border:1.5px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.88rem;color:var(--ink);outline:none;transition:border-color .14s;font-weight:400}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--gold);background:var(--white)}
+.ff textarea{resize:vertical;min-height:80px}
+.ff select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6560' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;cursor:pointer}
+.btn-submit{width:100%;padding:11px;background:var(--gold);color:var(--white);border:none;border-radius:var(--radius);font-family:var(--sans);font-size:.9rem;font-weight:600;transition:all .18s;letter-spacing:.02em}
+.btn-submit:hover{background:var(--gold-deep)}
+.form-note{text-align:center;font-size:.72rem;color:var(--ink-4);margin-top:9px}
+.form-err{display:none;padding:8px 12px;background:var(--terra-pale);border:1px solid rgba(184,64,48,.2);border-radius:var(--radius);font-size:.82rem;color:var(--terra);margin-bottom:12px}
+.form-ok{display:none;text-align:center;padding:32px 16px}
+.form-ok-icon{font-size:2.4rem;margin-bottom:10px}
+.form-ok h3{font-family:var(--serif);font-size:1.3rem;color:var(--ink);margin-bottom:7px;font-weight:600}
+.form-ok p{font-size:.85rem;color:var(--ink-3);font-weight:300}
+
+/* FOOTER */
+footer{background:var(--ink-2);padding:48px 5% 28px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{max-width:1080px;margin:0 auto}
+.footer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:36px;margin-bottom:36px;flex-wrap:wrap}
+.footer-brand .fb-name{font-family:var(--serif);font-size:1.2rem;color:var(--white);margin-bottom:6px;font-weight:600}
+.footer-brand .fb-name em{color:var(--gold-mid);font-style:italic}
+.footer-brand p{font-size:.78rem;color:rgba(255,255,255,.28);max-width:210px;line-height:1.65;margin-top:7px;font-weight:300}
+.footer-cols{display:flex;gap:44px;flex-wrap:wrap}
+.footer-col h4{font-size:.67rem;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.footer-col a{display:block;font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:7px;transition:color .15s;font-weight:300}
+.footer-col a:hover{color:var(--gold-mid)}
+.footer-bottom{padding-top:22px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,.18);font-weight:300}
+.footer-tags{display:flex;gap:9px;flex-wrap:wrap}
+.footer-tag{font-size:.67rem;color:rgba(255,255,255,.18);padding:3px 9px;border:1px solid rgba(255,255,255,.07);border-radius:12px}
+
+/* TOAST */
+#toast{position:fixed;bottom:22px;right:22px;background:var(--ink);color:var(--white);padding:13px 18px;border-radius:var(--radius);font-size:.84rem;z-index:999;transform:translateY(80px);transition:transform .28s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--shadow-2);max-width:280px;font-weight:400}
+#toast.show{transform:translateY(0)}
+#toast.ok{border-left:3px solid var(--sage)}
+#toast.err{border-left:3px solid var(--terra)}
 </style>
 </head>
 <body>
 
-<!-- AUTH SCREEN -->
-<div id="auth" style="display:flex;height:100vh">
-  <div class="ap">
-    <div class="ap-bg"></div><div class="ap-grid"></div>
-    <div>
-      <div class="brand-wm">Skill<em>Bridge</em> Arabia</div>
-      <div class="brand-sub">GCC Workforce Training Platform</div>
-    </div>
-    <div>
-      <div class="ah-quote">"Your skills,<br>your future<br>in the <span>Gulf.</span>"</div>
-      <div class="flags">
-        <div class="flag-pill"><span class="f">🇧🇩</span>Bangladesh</div>
-        <div class="flag-pill"><span class="f">🇮🇳</span>India</div>
-        <div class="flag-pill"><span class="f">🇳🇵</span>Nepal</div>
-        <div class="flag-pill"><span class="f">🇵🇭</span>Philippines</div>
-        <div class="flag-pill"><span class="f">🇵🇰</span>Pakistan</div>
-        <div class="flag-pill"><span class="f">🇱🇰</span>Sri Lanka</div>
-      </div>
-    </div>
-    <div class="auth-stats">
-      <div><div class="as-num">6,200+</div><div class="as-lbl">Certified workers</div></div>
-      <div><div class="as-num">98%</div><div class="as-lbl">Placement rate</div></div>
-      <div><div class="as-num">Free</div><div class="as-lbl">For workers</div></div>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Skill<em>Bridge</em> Arabia</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#courses">Courses</a>
+      <a href="#for">Partners</a>
+      <a href="#demo">Watch a lesson</a>
+      <a href="#contact">Contact</a>
+      <a href="https://app.skillbridgearabia.com" class="nav-cta" target="_blank">Try Platform →</a>
     </div>
   </div>
-  <div class="afp">
-    <div class="afw">
-      <h2>Welcome back</h2>
-      <p class="lead">Sign in to continue your certification journey.</p>
-      <div class="role-sw">
-        <button class="rb active" onclick="setRole('worker')">Worker</button>
-        <button class="rb" onclick="setRole('business')">Business</button>
-        <button class="rb" onclick="setRole('admin')">Admin</button>
-      </div>
-      <div id="login-form">
-        <div class="field"><label>Email address</label><input type="email" id="li-email" placeholder="you@email.com"></div>
-        <div class="field"><label>Password</label><input type="password" id="li-pass" placeholder="••••••••"></div>
-        <button class="btn-primary" onclick="doLogin()">Sign in →</button>
-        <div class="auth-sw">New here? <a onclick="toggleAuth()">Create a free account</a></div>
-        <div class="divider"><hr><span>or try a demo</span><hr></div>
-        <div class="demo-grid">
-          <div class="demo-chip" onclick="quickDemo('worker')">👷 Worker</div>
-          <div class="demo-chip" onclick="quickDemo('business')">🏢 Business</div>
-          <div class="demo-chip" onclick="quickDemo('admin')">⚙️ Admin</div>
-          <div class="demo-chip" onclick="window.open('https://lelo-app-5a2df944.base44.app/Home','_blank')">🚀 Quick Preview</div>
-        </div>
-      </div>
-      <div id="reg-form" style="display:none">
-        <div class="row2">
-          <div class="field"><label>First name *</label><input type="text" id="rg-first" placeholder="Mohammad"></div>
-          <div class="field"><label>Last name</label><input type="text" id="rg-last" placeholder="Rahman"></div>
-        </div>
-        <div class="field"><label>Email *</label><input type="email" id="rg-email" placeholder="you@email.com"></div>
-        <div id="wk-xtra">
-          <div class="row2">
-            <div class="field"><label>Home country</label><select id="rg-country"><option value="">Select…</option><option>Bangladesh</option><option>India</option><option>Nepal</option><option>Philippines</option><option>Pakistan</option><option>Sri Lanka</option></select></div>
-            <div class="field"><label>Language</label><select><option>English</option><option>Bengali</option><option>Hindi</option><option>Nepali</option><option>Tagalog</option></select></div>
-          </div>
-          <div class="field"><label>Target role</label><select><option>Barista</option><option>Front Liner</option><option>General Helper</option><option>Retail Associate</option></select></div>
-        </div>
-        <div id="biz-xtra" style="display:none">
-          <div class="field"><label>Business name *</label><input type="text" id="rg-biz" placeholder="Al-Fares Coffee Co."></div>
-          <div class="row2">
-            <div class="field"><label>Type</label><select><option>Coffee Shop</option><option>Restaurant</option><option>Hotel</option><option>Recruitment</option></select></div>
-            <div class="field"><label>City</label><select><option>Riyadh</option><option>Jeddah</option><option>Dammam</option></select></div>
-          </div>
-        </div>
-        <div class="field"><label>Password *</label><input type="password" placeholder="At least 8 characters"></div>
-        <button class="btn-primary" onclick="doRegister()">Create account →</button>
-        <div class="auth-sw">Already registered? <a onclick="toggleAuth()">Sign in</a></div>
-      </div>
-    </div>
-  </div>
-</div>
+</nav>
 
-<!-- APP SHELL -->
-<div id="app" style="display:none;height:100vh;flex-direction:row">
-  <aside class="sidebar">
-    <div class="sb-brand">
-      <div class="sb-wm">Skill<em>Bridge</em></div>
-      <div class="sb-pl" id="sb-pl">Worker Portal</div>
-    </div>
-    <div class="sb-user">
-      <div class="sb-av" id="sb-av">MR</div>
-      <div>
-        <div class="sb-uname" id="sb-uname">Loading…</div>
-        <div class="sb-uemail" id="sb-uemail">—</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-ornament-2"></div>
+  <div class="hero-inner container">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Vision 2030 · EdTech · Riyadh, KSA</div>
+      <h1>Your skills.<br><em>Your future</em><br><span class="muted">in the Gulf.</span></h1>
+      <p class="hero-body">Every year <strong>120,000 workers</strong> leave Bangladesh, India and Nepal for Saudi Arabia's cafés and hotels with zero training and no Arabic. SkillBridge Arabia certifies them <strong>before they board the flight</strong> — on their phone, in their language, free of charge.</p>
+      <div class="hero-actions">
+        <a href="https://app.skillbridgearabia.com" class="btn-primary" target="_blank">☕ Try the Platform</a>
+        <a href="#contact" class="btn-outline">Partner with us →</a>
       </div>
     </div>
-    <nav class="sb-nav" id="sb-nav"></nav>
-    <div class="sb-foot"><button class="btn-so" onclick="doLogout()">Sign out</button></div>
-  </aside>
-  <div class="main-area">
-    <div class="topbar">
-      <div class="topbar-title" id="tb-title">Dashboard</div>
-      <div class="topbar-right">
-        <div class="live-ind"><div class="live-dot"></div><span>14 active learners</span></div>
-        <div class="tb-time" id="tb-time"></div>
+    <div class="hero-right">
+      <div class="hero-stat-card">
+        <div class="hsc-num">850,000</div>
+        <div class="hsc-lbl">F&amp;B expat workers in Saudi Arabia</div>
+        <div class="hsc-sub">The market we are building for</div>
       </div>
-    </div>
-    <div class="page-body" id="page-body">
-      <div class="page active" id="page-dashboard"></div>
-      <div class="page" id="page-courses"></div>
-      <div class="page" id="page-coach"></div>
-      <div class="page" id="page-certificates"></div>
-      <div class="page" id="page-workers"></div>
-      <div class="page" id="page-businesses"></div>
-      <div class="page" id="page-analytics"></div>
-      <div class="page" id="page-profile"></div>
-      <div class="page" id="page-my-workers"></div>
+      <div class="hero-stat-card">
+        <div class="hsc-num">60%</div>
+        <div class="hsc-lbl">Arrive with no formal skills or training</div>
+        <div class="hsc-sub">The problem we are solving</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hsc-num">SAR 0</div>
+        <div class="hsc-lbl">Cost to the worker. Always and forever.</div>
+        <div class="hsc-sub">Our commitment to the people we serve</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CERT MODAL -->
-<div class="overlay" id="cert-overlay">
-  <div class="cert-paper">
-    <button class="cert-close" onclick="closeCert()">✕</button>
-    <div class="cert-ey">🏆 Certificate of Achievement</div>
-    <div class="cert-h1">SkillBridge Arabia</div>
-    <div class="cert-origin">Kingdom of Saudi Arabia · Vision 2030</div>
-    <div class="cert-presents">This certifies that</div>
-    <div class="cert-name" id="cert-name">Mohammad Rahman</div>
-    <div class="cert-body" id="cert-body">Has successfully completed the <strong>Barista Professional Program</strong>.</div>
-    <div class="cert-sigs">
-      <div><div class="cert-sig-name">SkillBridge Arabia</div><div class="cert-sig-line"></div><div class="cert-sig-lbl">Platform Authority · <span id="cert-date"></span></div></div>
-      <div style="text-align:center"><div class="cert-qr">⬛</div><div class="cert-id" id="cert-id">SBA-2026-XXXX</div></div>
-      <div style="text-align:right"><div class="cert-sig-name">HRDF Certified</div><div class="cert-sig-line" style="margin-left:auto"></div><div class="cert-sig-lbl">Human Resources Dev.</div></div>
+<!-- MISSION -->
+<section id="mission">
+  <div class="mission-stripe"></div>
+  <div class="mission-inner">
+    <p>Every year 120,000 workers arrive in Saudi Arabia's coffee shops with <em>zero training and no Arabic.</em> We fix that — on their phone, before they land.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-wrap container">
+    <div class="story-left">
+      <div class="sec-tag">The Worker's Journey</div>
+      <span class="section-rule"></span>
+      <h2>They leave home with a dream.<br><em>We make sure they arrive ready.</em></h2>
+      <p>A barista from Dhaka. A hospitality worker from Kathmandu. A front liner from Mumbai. They leave their families and communities for a two-year contract in a Saudi café.</p>
+      <p>They arrive speaking no Arabic. They have never used a commercial espresso machine. They do not know Saudi food safety law. Their employer expects them <strong>ready on Day 1.</strong></p>
+      <p>SkillBridge Arabia is the training they complete <strong>before they board the plane.</strong> On their phone. In Bengali, Hindi, Nepali or English. Certified by the time they land.</p>
+      <div class="story-pull">
+        <q>That certificate is not just a piece of paper. It is proof that you came prepared. And proof that you are worth more.</q>
+        <cite>Arjun, SkillBridge Arabia Barista Programme</cite>
+      </div>
     </div>
-    <div class="cert-actions">
-      <button class="btn btn-gold" onclick="showToast('Certificate saved as PDF 📄','ok');closeCert()">⬇ Download PDF</button>
-      <button class="btn btn-outline" onclick="closeCert()">Close</button>
+    <div class="origin-cards">
+      <div class="origin-card">
+        <div class="origin-flag">🇧🇩</div>
+        <div class="origin-info"><div class="oc">Bangladesh</div><div class="od">Approximately 80,000 F&amp;B workers travel to Saudi Arabia each year. Bengali language support available. Dhaka agency network confirmed.</div></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇮🇳</div>
+        <div class="origin-info"><div class="oc">India</div><div class="od">Approximately 120,000 F&amp;B workers travel to Saudi Arabia each year. Hindi language support available. Kerala hospitality community.</div></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇳🇵</div>
+        <div class="origin-info"><div class="oc">Nepal</div><div class="od">Approximately 40,000 F&amp;B workers travel to Saudi Arabia each year. Nepali language support available. Community referral model.</div></div>
+      </div>
+      <div class="origin-card">
+        <div class="origin-flag">🇵🇭</div>
+        <div class="origin-info"><div class="oc">Philippines</div><div class="od">Approximately 25,000 F&amp;B workers travel to Saudi Arabia each year. English primary. Hospitality-trained workforce.</div></div>
+      </div>
     </div>
   </div>
-</div>
-<div class="toast" id="toast"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-centre">
+    <div class="sec-tag">The Process</div>
+    <span class="section-rule" style="margin:0 auto 20px"></span>
+    <h2>Three steps from home<br><em>to certified</em></h2>
+    <p>The agency enrols the worker. The worker trains at home on their phone. The employer receives a certified candidate before the visa is stamped.</p>
+  </div>
+  <div class="steps-row container">
+    <div class="step">
+      <div class="step-n">01 / Agency</div>
+      <span class="step-icon">📋</span>
+      <h3>Agency enrols the worker</h3>
+      <p>The recruitment agency adds the candidate to their SkillBridge dashboard with a name, email and target role. The worker receives a login link immediately. Two minutes per worker. Progress is visible in real time.</p>
+      <span class="step-time">Two minutes to enrol</span>
+    </div>
+    <div class="step">
+      <div class="step-n">02 / Worker</div>
+      <span class="step-icon">📱</span>
+      <h3>Worker trains on their phone</h3>
+      <p>Thirty hours of video lessons, quizzes and language modules at their own pace, in their own language, at home before departure. The agency and employer see live progress throughout.</p>
+      <span class="step-time">Typically two to four weeks</span>
+    </div>
+    <div class="step">
+      <div class="step-n">03 / Employer</div>
+      <span class="step-icon">🏆</span>
+      <h3>Certified candidate arrives</h3>
+      <p>The worker passes the final exam. A QR-verified certificate is generated instantly. The employer verifies it in seconds. The worker starts on Day 1 skilled, SFDA-compliant and with working Arabic.</p>
+      <span class="step-time">Certificate instant on pass</span>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="courses-head container">
+    <div class="sec-tag">Certified Curriculum</div>
+    <span class="section-rule"></span>
+    <h2>Four tracks.<br><em>One platform.</em> Every device.</h2>
+  </div>
+  <div class="courses-grid container">
+    <div class="course-card">
+      <span class="cc-icon">☕</span>
+      <div class="cc-track">Track 1 · SCA Aligned</div>
+      <h3>Barista Professional Programme</h3>
+      <p>Coffee origins, espresso mastery, milk science, the full drinks menu and Saudi customer service culture. Built for the KSA specialty café market and endorsed by SCA curriculum standards.</p>
+      <div class="cc-meta">
+        <span class="cc-badge">30 hours</span>
+        <span class="cc-badge">12 lessons</span>
+        <span class="cc-badge">SCA-aligned certificate</span>
+      </div>
+    </div>
+    <div class="course-card">
+      <span class="cc-icon">🗣️</span>
+      <div class="cc-track">Track 2 · Language</div>
+      <h3>Arabic for Hospitality</h3>
+      <p>Over 50 essential Arabic phrases for café and hotel work. Greetings, taking orders, handling complaints and payment language. Vision 2030 service ratings directly reward Arabic-speaking expat staff.</p>
+      <div class="cc-meta">
+        <span class="cc-badge">15 hours</span>
+        <span class="cc-badge">8 lessons</span>
+        <span class="cc-badge">Gulf Arabic focus</span>
+      </div>
+    </div>
+    <div class="course-card">
+      <span class="cc-icon">🌟</span>
+      <div class="cc-track">Track 3 · Service Excellence</div>
+      <h3>Front Liner Excellence</h3>
+      <p>Saudi customer expectations, Vision 2030 service benchmarks, natural upselling, complaint resolution and de-escalation. Mystery shoppers score major chains — preparation matters.</p>
+      <div class="cc-meta">
+        <span class="cc-badge">20 hours</span>
+        <span class="cc-badge">10 lessons</span>
+        <span class="cc-badge">Vision 2030 rated</span>
+      </div>
+    </div>
+    <div class="course-card">
+      <span class="cc-icon">🏢</span>
+      <div class="cc-track">Track 4 · Compliance</div>
+      <h3>GCC Workplace Readiness</h3>
+      <p>Saudi Labour Law, worker rights, SFDA food safety compliance, MHRSD requirements, GOSI registration and Nitaqat awareness. Every expat worker entering Saudi Arabia needs this knowledge.</p>
+      <div class="cc-meta">
+        <span class="cc-badge">10 hours</span>
+        <span class="cc-badge">6 lessons</span>
+        <span class="cc-badge">MHRSD aligned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="for">
+  <div class="section-centre container">
+    <div class="sec-tag">Who It Serves</div>
+    <span class="section-rule" style="margin:0 auto 20px"></span>
+    <h2>Built for three audiences.<br><em>Essential for all three.</em></h2>
+    <p>One platform. Three completely different problems solved at the same time.</p>
+  </div>
+  <div class="for-grid container">
+    <div class="for-card">
+      <div class="for-icon fi-a">🏢</div>
+      <div class="for-aud">Recruitment Agencies</div>
+      <h3>Certified workers. Fewer failures. Better margins.</h3>
+      <div class="for-pain">Workers fail on arrival, re-recruitment costs SAR 1,500 and clients are lost</div>
+      <p>SAR 225 to certify one worker. One prevented re-recruitment pays for six certifications. Agencies that send certified workers win the premium tier of the market.</p>
+      <ul class="for-ul">
+        <li>Agency dashboard showing every worker in real time</li>
+        <li>QR-verified certificates that employers trust instantly</li>
+        <li>Competitive edge over uncertified candidates</li>
+        <li>Start with five workers free, no contract required</li>
+      </ul>
+      <a href="#contact" class="for-cta">Start a free pilot →</a>
+    </div>
+    <div class="for-card">
+      <div class="for-icon fi-b">☕</div>
+      <div class="for-aud">Coffee Shops and Employers</div>
+      <h3>Day 1 ready. No remedial onboarding required.</h3>
+      <div class="for-pain">Forty percent turnover within 90 days for untrained workers</div>
+      <p>Your new hire completed 30 hours of training before they arrived. You saw their certificate before the interview. The first week is productive rather than remedial.</p>
+      <ul class="for-ul">
+        <li>See progress live before the worker arrives in Saudi Arabia</li>
+        <li>SFDA food safety compliance already completed</li>
+        <li>Working Arabic hospitality language from Day 1</li>
+        <li>Lower turnover, faster onboarding, happier guests</li>
+      </ul>
+      <a href="#contact" class="for-cta">Train your team →</a>
+    </div>
+    <div class="for-card">
+      <div class="for-icon fi-c">👷</div>
+      <div class="for-aud">Workers</div>
+      <h3>Your certificate changes the conversation before you arrive.</h3>
+      <div class="for-pain">No Arabic, no skills, no certification, no career path</div>
+      <p>Certified workers in Saudi Arabia earn 50 to 100 percent more than uncertified workers in the same role. On a two-year contract, that difference is life-changing for your family.</p>
+      <ul class="for-ul">
+        <li>Completely free for workers, no cost ever</li>
+        <li>Train on your phone at home before departure</li>
+        <li>Bengali, Hindi, Nepali and English available</li>
+        <li>QR-verified certificate recognised by Saudi employers</li>
+      </ul>
+      <a href="https://app.skillbridgearabia.com" class="for-cta" target="_blank">Start learning free →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="demo">
+  <div class="demo-warm"></div>
+  <div class="demo-inner container">
+    <div class="sec-tag">Watch a Lesson</div>
+    <h2>See how workers learn<br><em>before they arrive</em></h2>
+    <p>This is what a worker in Dhaka or Kathmandu watches on their phone tonight. Lesson 1 of the Barista Professional Programme.</p>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/Oqq4jY4Ke6s?rel=0&modestbranding=1" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Lesson 1, Welcome to SkillBridge Arabia, Barista Professional Programme, English with Arabic phrases woven throughout</p>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform">
+  <div class="platform-inner container">
+    <div class="section-centre" style="text-align:left;max-width:100%">
+      <div class="sec-tag">The Platform</div>
+      <span class="section-rule"></span>
+      <h2 style="font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--ink);line-height:1.2;margin-top:10px;font-weight:700">What workers and<br><em style="color:var(--gold);font-style:italic">employers experience</em></h2>
+      <p style="color:var(--ink-3);font-size:.95rem;line-height:1.7;margin-top:12px;font-weight:300">Real courses. Real progress tracking. Real certificates. Try it now with a demo account, no sign-up required.</p>
+    </div>
+    <div class="platform-shell">
+      <div class="pshell-bar">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="pshell-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+          <div class="pshell-url">app.skillbridgearabia.com</div>
+        </div>
+        <a href="https://app.skillbridgearabia.com" target="_blank" class="pshell-link">Open live platform →</a>
+      </div>
+      <div class="pshell-body">
+        <div class="pshell-side">
+          <div class="pshell-brand">
+            <div class="pshell-wm">Skill<em>Bridge</em></div>
+            <div class="pshell-sub">Worker Portal</div>
+          </div>
+          <div class="psn on"><span class="ni">📊</span>My Dashboard</div>
+          <div class="psn"><span class="ni">📚</span>Course Catalogue</div>
+          <div class="psn"><span class="ni">🤖</span>AI Coach</div>
+          <div class="psn"><span class="ni">🏆</span>Certificates</div>
+          <div class="psn"><span class="ni">👤</span>My Profile</div>
+        </div>
+        <div class="pshell-main">
+          <div class="psm-top">
+            <div class="psm-title">Dashboard</div>
+            <div class="psm-live"><div class="live-dot"></div>14 active learners</div>
+          </div>
+          <div class="psm-stats">
+            <div class="psm-stat"><div class="psm-sl">Enrolled</div><div class="psm-sv">2</div></div>
+            <div class="psm-stat green"><div class="psm-sl">Certified</div><div class="psm-sv">1</div></div>
+            <div class="psm-stat"><div class="psm-sl">Progress</div><div class="psm-sv">68%</div></div>
+            <div class="psm-stat"><div class="psm-sl">Lessons</div><div class="psm-sv">8</div></div>
+          </div>
+          <div class="psm-courses">
+            <div class="psm-course">
+              <div class="psm-ci">☕</div>
+              <div style="flex:1"><div class="psm-cn">Barista Professional Programme</div><div class="psm-cm">30 hours · 12 lessons · SCA Aligned</div></div>
+              <div class="psm-prog"><div class="psm-fill" style="width:68%"></div></div>
+            </div>
+            <div class="psm-course">
+              <div class="psm-ci">🗣️</div>
+              <div style="flex:1"><div class="psm-cn">Arabic for Hospitality</div><div class="psm-cm">15 hours · 8 lessons</div></div>
+              <div class="psm-prog"><div class="psm-fill" style="width:22%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="platform-btns">
+      <a href="https://app.skillbridgearabia.com" class="btn-primary" target="_blank">Try as Worker →</a>
+      <a href="https://app.skillbridgearabia.com" class="btn-outline" target="_blank">Try as Employer →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section id="traction">
+  <div class="traction-inner container">
+    <div class="sec-tag">Where We Are</div>
+    <span class="section-rule"></span>
+    <h2>Built and launching.<br><em>Not a concept.</em></h2>
+    <div class="traction-grid">
+      <div class="trac-list">
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">Live platform at app.skillbridgearabia.com</div><span class="trac-pill tp-live">Live</span></div>
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">Barista Professional Programme, 12 lessons in production</div><span class="trac-pill tp-act">Building</span></div>
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">AI video presenter, South Asian, bilingual English and Arabic</div><span class="trac-pill tp-live">Live</span></div>
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">Recruitment agencies from Bangladesh, India and Nepal confirmed</div><span class="trac-pill tp-act">Active</span></div>
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">Tech co-founder joining, product build underway</div><span class="trac-pill tp-act">Active</span></div>
+        <div class="trac-row"><div class="trac-check tc-done">✅</div><div class="trac-label">TalentLMS learning platform subscribed and configured</div><span class="trac-pill tp-live">Live</span></div>
+        <div class="trac-row"><div class="trac-check tc-prog">🔄</div><div class="trac-label">TVTC approval, Saudi certification pathway</div><span class="trac-pill tp-wip">In progress</span></div>
+        <div class="trac-row"><div class="trac-check tc-prog">🔄</div><div class="trac-label">HRDF eligibility, government funding pathway</div><span class="trac-pill tp-wip">In progress</span></div>
+      </div>
+      <div class="trac-nums">
+        <div class="tn-card"><div class="tn-big">$25.99B</div><div class="tn-lbl">Saudi F&amp;B market 2026</div></div>
+        <div class="tn-card"><div class="tn-big">$67M</div><div class="tn-lbl">Serviceable market</div></div>
+        <div class="tn-card"><div class="tn-big">85%</div><div class="tn-lbl">Target gross margin</div></div>
+        <div class="tn-card"><div class="tn-big">Month 4</div><div class="tn-lbl">Projected break-even</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="vision-pattern"></div>
+  <div class="vision-in container">
+    <h2>Aligned with Saudi Vision 2030's human capital agenda</h2>
+    <p>SkillBridge Arabia directly supports Saudi Arabia's goal of a skilled, productive and compliant frontline workforce across the hospitality and F&amp;B sector.</p>
+    <div class="vtags">
+      <span class="vtag">HRDF Eligible</span>
+      <span class="vtag">TVTC Pathway</span>
+      <span class="vtag">MHRSD Aligned</span>
+      <span class="vtag">SCA Curriculum</span>
+      <span class="vtag">SFDA Compliant</span>
+      <span class="vtag">Nitaqat Aware</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap container">
+    <div class="contact-left">
+      <div class="sec-tag">Get in Touch</div>
+      <span class="section-rule"></span>
+      <h2>Ready to partner or<br><em>start a pilot?</em></h2>
+      <p>Whether you are a recruitment agency, an employer, an investor or a worker ready to start, we want to hear from you. We respond within 24 hours.</p>
+      <div class="channels">
+        <a href="mailto:hello@skillbridgearabia.com" class="channel">
+          <span class="ch-icon">✉️</span>
+          <div><div class="ch-label">Email</div><div class="ch-val">hello@skillbridgearabia.com</div></div>
+        </a>
+        <a href="https://app.skillbridgearabia.com" class="channel" target="_blank">
+          <span class="ch-icon">🚀</span>
+          <div><div class="ch-label">Platform</div><div class="ch-val">app.skillbridgearabia.com</div></div>
+        </a>
+        <a href="https://skillbridgearabia.com/investor" class="channel">
+          <span class="ch-icon">📊</span>
+          <div><div class="ch-label">Investor Deck</div><div class="ch-val">skillbridgearabia.com/investor</div></div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="form-box" id="cform">
+        <div class="form-err" id="ferr">Please enter your name and a valid email address.</div>
+        <div class="ff"><label>Your name</label><input type="text" id="fn" placeholder="Mohammad Rahman"></div>
+        <div class="ff"><label>Email address</label><input type="email" id="fe" placeholder="you@company.com"></div>
+        <div class="ff"><label>Organisation</label><input type="text" id="fc" placeholder="Company or agency name"></div>
+        <div class="ff"><label>I am a</label>
+          <select id="fr">
+            <option value="">Select one…</option>
+            <option>Recruitment Agency</option>
+            <option>Coffee Shop or F&amp;B Employer</option>
+            <option>Investor</option>
+            <option>Worker looking to enrol</option>
+            <option>Tech or Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="ff"><label>Message</label><textarea id="fm" placeholder="Tell us what you are looking for…"></textarea></div>
+        <button class="btn-submit" onclick="handleSubmit()">Send message →</button>
+        <p class="form-note">Confidential. We respond within 24 hours.</p>
+      </div>
+      <div class="form-ok" id="fok">
+        <div class="form-ok-icon">✅</div>
+        <h3>Message received.</h3>
+        <p>We will be in touch within 24 hours at hello@skillbridgearabia.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-name">Skill<em>Bridge</em> Arabia</div>
+        <p>From Origin to Excellence. Certified training for the GCC's frontline workforce.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="https://app.skillbridgearabia.com" target="_blank">Try the Platform</a>
+          <a href="https://app.skillbridgearabia.com" target="_blank">Worker Login</a>
+          <a href="https://app.skillbridgearabia.com" target="_blank">Business Login</a>
+        </div>
+        <div class="footer-col">
+          <h4>Courses</h4>
+          <a href="#courses">Barista Professional</a>
+          <a href="#courses">Arabic for Hospitality</a>
+          <a href="#courses">Front Liner Excellence</a>
+          <a href="#courses">GCC Workplace Readiness</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#for">For Agencies</a>
+          <a href="#for">For Employers</a>
+          <a href="#for">For Workers</a>
+          <a href="https://skillbridgearabia.com/investor">Investor Deck</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SkillBridge Arabia · hello@skillbridgearabia.com</p>
+      <div class="footer-tags">
+        <span class="footer-tag">Vision 2030</span>
+        <span class="footer-tag">EdTech</span>
+        <span class="footer-tag">WorkTech</span>
+        <span class="footer-tag">Riyadh, KSA</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
 
 <script>
-
-// ═══════════════════════════════════════
-// COURSE DATA — full curriculum per spec
-// ═══════════════════════════════════════
-const COURSES = [
-{
-  id:'barista', title:'Barista Professional Program',
-  track:'Barista', hours:30, icon:'☕', level:'Beginner',
-  rating:4.9, reviews:1240, students:6200,
-  tagline:'SCA-Aligned · Vision 2030 · Digital Certificate',
-  about:`Crafting amazing espressos is more than a personal preference. It is more than modern science. Amazing espresso is rooted in tradition. This is where foundational training proves so valuable — providing you the confidence to accurately pull shots and prepare drinks that stand out from the rest.<br><br>This training is <strong>approved by the Specialty Coffee Association</strong> for certification in the <strong>Coffee Skills Program</strong> and aligned with Saudi Vision 2030 Human Capital standards.`,
-  sections:[
-    {
-      title:'Introduction to the Barista Skills Course',
-      lessons:[
-        {id:'l0', title:'Course description, overview and resources', dur:'5:04', preview:true, type:'video',
-         content:`<p>Welcome to the <strong>SkillBridge Arabia Barista Professional Program</strong> — the GCC's most comprehensive barista certification for expatriate workers.</p>
-<p>This course is <strong>SCA-aligned</strong> and recognised by Saudi Vision 2030's Human Capital Framework. Complete all lessons and pass the final exam to earn a verifiable digital certificate that Saudi employers recognise.</p>
-<ul><li><strong>4 sections</strong> covering all barista competencies from bean to cup</li><li><strong>12 video lessons</strong> totalling approximately 2 hours of content</li><li><strong>Downloadable reference guides</strong> for each section</li><li><strong>Final exam</strong> — score 70%+ to earn your certificate</li><li><strong>Shareable QR-verified digital certificate</strong> upon passing</li></ul>
-<p>This first lesson is a <strong>free preview</strong> — available before enrolment. All other lessons require enrolment.</p>`,
-         note:'All resources mentioned in this lesson are available in the Resources tab after enrolment.'}
-      ]
-    },
-    {
-      title:'The Coffees Baristas Use, Café Workspace and Workflow',
-      lessons:[
-        {id:'l1', title:'How Arabica and Robusta beans have shaped espresso blends', dur:'12:36', preview:false, type:'video',
-         content:`<p>Coffee begins with the bean. The two species you will work with every day are <strong>Coffea arabica</strong> and <strong>Coffea canephora</strong> (Robusta) — and understanding their differences transforms how you approach every blend on your menu.</p>
-<p><strong>Arabica</strong> dominates specialty coffee. Grown at altitude (800–2200m), it develops complex sugars and aromatic compounds — floral, fruity, and nuanced. Lower caffeine (~1.5%) and higher price point. Sensitive to climate and handling. Specialty arabica forms the backbone of GCC premium café menus.</p>
-<p><strong>Robusta</strong> is hardier, cheaper, and higher caffeine (~2.5%). Grown at lower altitudes. High-quality washed Robusta contributes thick crema, body, and caffeine punch to espresso blends. Most Italian espresso blends contain 10–30% Robusta for this reason.</p>
-<ul><li>Arabica: altitude-grown, complex, delicate — specialty use</li><li>Robusta: hardy, high-caffeine, bold — blending body and crema</li><li>Blending rationale: arabica complexity + robusta body/crema</li><li>Single-origin vs. blends: know your menu and explain both</li></ul>`,
-         note:'Key difference to memorise: Arabica = fruit/floral complexity; Robusta = earthy body and crema. Customers will ask.'},
-        {id:'l2', title:'Myriad influences of coffee freshness and roast level for baristas', dur:'13:37', preview:true, type:'video',
-         content:`<p>Freshness is the most misunderstood variable in espresso quality. Even perfect technique cannot save stale coffee. You control freshness through storage, rotation, and communication with your manager.</p>
-<p><strong>Roast levels and their impact:</strong></p>
-<ul><li><strong>Light roast:</strong> higher acidity, preserved origin flavours, fruity/floral notes, lighter body. Requires precise extraction — unforgiving of errors.</li><li><strong>Medium roast:</strong> balanced sweetness, moderate acidity, fuller body. Most versatile for café menus.</li><li><strong>Dark roast:</strong> low acidity, bitter/chocolate/smoky notes, heavy body. More forgiving to extract. Common in traditional Arabic-influenced espresso.</li></ul>
-<p>The <strong>CO₂ off-gassing window</strong>: freshly roasted beans release carbon dioxide for 5–14 days. During this period, espresso will channel unevenly. Most quality cafés use beans 7–21 days post-roast. After 4–6 weeks, flavour significantly degrades.</p>`,
-         note:'Always check the roast date on bags. Best practice: order weekly, store sealed in cool/dark conditions, use within 4 weeks of roast.'},
-        {id:'l3', title:'Espresso machines, espresso grinders and how to choose from your many options as a barista', dur:'16:05', preview:false, type:'video',
-         content:`<p>Your two most critical tools are the <strong>espresso machine</strong> and the <strong>grinder</strong>. Understanding what each does — and why quality matters — helps you troubleshoot problems and communicate with your employer.</p>
-<p><strong>Espresso Machines — Key Types:</strong></p>
-<ul><li><strong>Semi-automatic:</strong> barista controls grind, dose, and extraction time. Most skill-dependent — most common in specialty cafés.</li><li><strong>Automatic:</strong> machine controls water volume; barista controls grind and dose.</li><li><strong>Super-automatic:</strong> machine does everything — used in high-volume, lower-specialty environments.</li></ul>
-<p><strong>Grinders — the unsung hero:</strong> Grind quality determines extraction quality more than any other variable. Burr grinders (flat or conical) produce consistent particle size. Blade grinders produce uneven particles — never used in quality espresso. In KSA, most quality cafés run Mahlkönig, Eureka, or Mazzer grinders.</p>
-<ul><li>Daily grinder calibration is your first task every morning</li><li>Grinder temperature affects extraction — warm up before service</li><li>Blade grinders are never acceptable for espresso</li></ul>`,
-         note:'The grinder is more important than the machine. A great grinder with a decent machine outperforms a great machine with a poor grinder.'}
-      ]
-    },
-    {
-      title:'The Espresso Process, Extraction, Sensory, Milk and the Barista Menu',
-      lessons:[
-        {id:'l4', title:'What is espresso and how do different espresso recipes affect the beverage', dur:'13:13', preview:false, type:'video',
-         content:`<p><strong>Espresso</strong> is a brewing method, not a roast level. It forces pressurised water (9 bar) through finely ground, tightly packed coffee to produce a concentrated 25–40ml beverage with a distinct layer of <em>crema</em>.</p>
-<p>The <strong>espresso recipe</strong> defines the relationship between dry coffee (dose) and liquid espresso (yield). The three core variables:</p>
-<ul><li><strong>Dose:</strong> grams of dry coffee in the basket (typical: 18–22g for a double)</li><li><strong>Yield:</strong> grams of liquid espresso produced (typical: 36–44g)</li><li><strong>Time:</strong> total extraction duration (typical: 25–32 seconds)</li></ul>
-<p>Ratio 1:2 (18g dose → 36g yield) is the classic starting point. Specialty cafés explore 1:2.5 or 1:3 for fruity/light roasts. Traditional Italian style often runs 1:1.5 for intensity. <strong>There is no single correct ratio</strong> — the goal is a balanced, intentional cup.</p>`,
-         note:'On Day 1, always ask: "What is our espresso recipe?" and write it down. Every café has its own spec.'},
-        {id:'l5', title:'The barista routine: grinding, calibrating, dosing, distributing, tamping for ideal extraction', dur:'17:34', preview:true, type:'video',
-         content:`<p>Consistency is the barista's highest skill. The extraction routine must be identical on every shot, every hour. Here is the professional 7-step sequence:</p>
-<ul><li><strong>1. Purge the grinder</strong> — discard 3–5g to clear stale grounds from the chute</li><li><strong>2. Dose</strong> — grind directly into the portafilter basket, target weight ±0.2g</li><li><strong>3. Distribute</strong> — level grounds using the WDT (Weiss Distribution Technique); prevents channelling</li><li><strong>4. Tamp</strong> — apply 15–20kg of even vertical pressure; wrist straight, no twist at end</li><li><strong>5. Clean the rim</strong> — brush any grounds from the basket edge and portafilter rim</li><li><strong>6. Purge the group head</strong> — run 2 seconds of water to clear old grounds and stabilise temperature</li><li><strong>7. Lock and extract</strong> — insert portafilter, start timer, watch the yield</li></ul>`,
-         note:'Channelling (uneven water flow through the puck) is the #1 extraction problem. Caused by uneven distribution or tamping. Produces bitter, watery shots simultaneously.'},
-        {id:'l6', title:'Milk freshness, foaming techniques, temperatures and troubleshooting', dur:'12:56', preview:false, type:'video',
-         content:`<p>Milk quality and technique separate good baristas from great ones. Correctly textured milk makes every drink taste better.</p>
-<p><strong>Steaming sequence:</strong> Purge wand → submerge 1cm at 30° tilt → stretch 3 seconds (tip near surface) → submerge and spin → heat to 65°C → tap to pop bubbles → swirl to combine → pour immediately.</p>
-<p><strong>Troubleshooting:</strong></p>
-<ul><li>Large bubbles = tip too high during stretch, or too much air too fast</li><li>No spinning = pitcher not tilted enough, no vortex forming</li><li>Scorched/sweet milk = over 70°C — discard and restart</li><li>Use full-fat (whole) milk — higher fat content = better microfoam stability</li></ul>`,
-         note:'65°C is the sweet spot. Milk sugars (lactose) caramelise slightly at this temperature, producing natural sweetness without burning.'},
-        {id:'l7', title:'Creating and serving basic drinks on an espresso menu with Latte Art', dur:'18:26', preview:false, type:'video',
-         content:`<p>The core espresso menu for any GCC café role:</p>
-<ul><li><strong>Espresso:</strong> 18–20g dose, 36–40g yield, 25–32 seconds, 60ml ceramic cup</li><li><strong>Americano:</strong> espresso + hot water (1:3 ratio); water first in KSA to preserve crema</li><li><strong>Flat White:</strong> ristretto double, 150ml milk, 1–2mm microfoam — most technically demanding</li><li><strong>Latte:</strong> double espresso, 220–240ml steamed milk, 5mm microfoam, latte art</li><li><strong>Cappuccino:</strong> 1/3 espresso, 1/3 steamed milk, 1/3 thick foam in 150–180ml cup</li><li><strong>Qahwa (Arabic Coffee):</strong> brewed separately, served in finjan, always with dates</li></ul>
-<p><strong>Basic Latte Art — Heart:</strong> Pour from 20cm high → lower to 2cm, create central white mass → push through in a thin straight line at the end.</p>`,
-         note:'Saudi customers often request extra sugar. Always offer "Sukar?" (Sugar?) when serving. Offering without being asked is excellent Vision 2030 service.'}
-      ]
-    },
-    {
-      title:'Cleaning, Health, Safety, Water Quality and the Customer Café Experience',
-      lessons:[
-        {id:'l8', title:'Establishing a safe and hygienic work place for you, customers and your equipment', dur:'12:24', preview:false, type:'video',
-         content:`<p>Saudi SFDA hygiene standards are enforced with unannounced inspections. Every barista is personally responsible for their zone.</p>
-<p><strong>Personal Hygiene — Non-negotiables:</strong></p>
-<ul><li>Hair fully covered at all times (cap or net)</li><li>No hand jewellery during preparation</li><li>Handwash 20 seconds: before starting, after breaks, after touching face/phone</li><li>Clean, ironed uniform changed daily</li></ul>
-<p><strong>Equipment Cleaning Schedule:</strong></p>
-<ul><li><strong>Every shot:</strong> wipe steam wand before and after use</li><li><strong>Every hour:</strong> wipe drip tray, clean portafilter basket, wipe machine surfaces</li><li><strong>End of day:</strong> backflush group heads, soak portafilters, clean grinder, mop all surfaces</li><li><strong>Weekly:</strong> deep grinder clean, descale boilers per manufacturer schedule</li></ul>
-<p><strong>Water Quality:</strong> Water is 98% of your espresso. Ideal TDS: 75–150 ppm. Most quality KSA cafés use filtered or RO systems. Scale buildup damages boilers and affects extraction.</p>`,
-         note:'The cleaning schedule is not optional — it is part of your professional identity. A clean station reflects a professional barista.'}
-      ]
-    },
-    {
-      title:'Course Wrap Up, Final Exam and Next Steps',
-      lessons:[
-        {id:'l9', title:'Course review', dur:'1:41', preview:false, type:'video',
-         content:`<p>Congratulations on reaching the final section. Let's consolidate what you've learned:</p>
-<p><strong>Section 1 — The Beans:</strong> Arabica vs. Robusta, freshness principles, roast levels and their flavour impact, grinder primacy over machine choice.</p>
-<p><strong>Section 2 — The Process:</strong> Espresso recipe ratios (dose/yield/time), the 7-step extraction routine, channelling prevention, milk science and the 65°C sweet spot, latte art fundamentals, and the full core drinks menu.</p>
-<p><strong>Section 3 — The Workplace:</strong> SFDA hygiene compliance, personal presentation standards, equipment cleaning schedules, water quality basics, and Saudi customer service culture.</p>
-<p>You are now ready to take the final exam. The exam contains <strong>10 questions</strong> drawn from all sections. A score of <strong>70% or above</strong> earns your certificate. You may retake as many times as needed.</p>`,
-         note:'The exam is weighted toward areas most tested in real Saudi café operations and SFDA inspections.'},
-        {id:'l10', title:'Test yourself with the online course exam', dur:'3:00', preview:false, type:'quiz',
-         content:'Test your knowledge with 10 questions across all course sections. Score 70%+ to earn your certificate.'},
-        {id:'l11', title:'Course completion! Optional next steps', dur:'', preview:false, type:'video',
-         content:`<p><strong>Congratulations on completing the Barista Professional Program! 🎉</strong></p>
-<p>Your next steps:</p>
-<ul><li><strong>If you have a job offer:</strong> Download your certificate, share it with your employer, and ask about their specific house recipes and equipment on Day 1.</li><li><strong>If still looking for work:</strong> Enrol in the Arabic for Hospitality course. Vision 2030 ratings actively reward Arabic-speaking expat staff.</li><li><strong>SCA path:</strong> This course qualifies you to sit the SCA Barista Skills Foundation exam. Contact an SCA Authorised Training Provider in your area.</li><li><strong>Continue on SkillBridge:</strong> Try Front Liner Excellence or GCC Workplace Readiness next.</li></ul>`}
-      ]
+// Smooth scroll for all anchor links — fixes the Partner with us button
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const id = this.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      const offset = 70;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
-  ],
-  quizzes:[
-    {q:'What is the ideal water temperature for espresso extraction?', opts:['80°C','93°C','100°C','75°C'], ans:1, exp:'93°C is optimal — too hot causes bitter over-extraction, too cool causes sour under-extraction.'},
-    {q:'Which coffee species is known for thick crema and higher caffeine (~2.5%)?', opts:['Arabica','Liberica','Robusta','Excelsa'], ans:2, exp:'Robusta has ~2.5% caffeine vs Arabica\'s 1.5%, and its higher lipid content produces abundant crema.'},
-    {q:'What is the correct milk steaming target temperature?', opts:['50°C','65°C','80°C','90°C'], ans:1, exp:'65°C is the sweet spot — milk sugars caramelise for natural sweetness without scalding.'},
-    {q:'In the extraction routine, what does WDT stand for?', opts:['Water Dose Technique','Weiss Distribution Technique','Wet Dosing Tool','Weight Determination Test'], ans:1, exp:'WDT (Weiss Distribution Technique) breaks up clumps and evenly distributes grounds before tamping.'},
-    {q:'How long should handwashing take under SFDA food hygiene rules?', opts:['5 seconds','10 seconds','20 seconds','30 seconds'], ans:2, exp:'20 seconds of thorough handwashing is the SFDA minimum for food handlers.'},
-    {q:'What does a 1:2 espresso ratio mean?', opts:['1g coffee to 2ml water','18g dose yields 36g espresso','1 shot to 2 milk parts','100ml water to 200ml yield'], ans:1, exp:'A 1:2 ratio means for every 1g of dry coffee, you extract 2g of liquid espresso — so 18g dose → 36g yield.'},
-    {q:'What is Qahwa (Arabic coffee) traditionally served with?', opts:['Sugar cubes','Warm milk','Dates','Lemon wedges'], ans:2, exp:'Qahwa is always served with dates — a deeply rooted Saudi hospitality tradition.'},
-    {q:'Which grinder type is NEVER acceptable for espresso?', opts:['Flat burr','Conical burr','Blade grinder','Ceramic burr'], ans:2, exp:'Blade grinders produce uneven particle sizes causing simultaneous over- and under-extraction.'},
-    {q:'What causes channelling in espresso extraction?', opts:['Too high water temperature','Uneven coffee distribution or tamping','Using Robusta beans','Water that is too soft'], ans:1, exp:'Channelling occurs when water finds easy paths through uneven grounds, causing inconsistent extraction.'},
-    {q:'In Saudi cafés, what goes in the Americano cup first?', opts:['Espresso, then water','Water, then espresso','Both simultaneously','Milk first'], ans:1, exp:'In KSA practice, water goes in first to preserve the crema when espresso is poured over.'}
-  ]
-},
-{
-  id:'arabic', title:'Arabic for Hospitality',
-  track:'Language', hours:15, icon:'🗣️', level:'Foundational',
-  rating:4.8, reviews:870, students:3100,
-  tagline:'Essential Phrases · Cultural Confidence · Vision 2030 Rated',
-  about:`Essential Arabic communication for coffee shops, hotels and restaurants. Build real confidence in daily GCC interactions from Day 1 on the job.<br><br>Saudi Vision 2030 service ratings <strong>actively reward Arabic-speaking expat staff</strong>. This course gives you the phrases, cultural knowledge and confidence to earn those ratings.`,
-  sections:[
-    {title:'Core Greetings and Culture', lessons:[
-      {id:'al1', title:'Greetings, etiquette and cultural essentials', dur:'14:20', preview:true, type:'video',
-       content:`<p>"As-salamu alaykum" (السلام عليكم) is the universal greeting — respond "Wa alaykum as-salam." "Ahlan wa sahlan" (أهلاً وسهلاً) means Welcome. "Marhaba" (مرحبا) is informal hello.</p><ul><li>Never extend hand to opposite gender unless initiated</li><li>"Inshallah" (إن شاء الله) acknowledges God's will — use when confirming future events</li><li>Eye contact + smile = professionalism in Saudi service culture</li><li>Preserving customer dignity ("wajh") is paramount in all interactions</li></ul>`,
-       note:'Saudi customers deeply appreciate Arabic attempts from expat staff — it builds instant trust and is scored in Vision 2030 service ratings.'},
-      {id:'al2', title:'Taking orders, numbers and confirming', dur:'13:05', preview:false, type:'video',
-       content:`<p>"Matha turid?" (ماذا تريد؟) — What would you like? "Sakhun aw barid?" (ساخن أو بارد؟) — Hot or cold? "Ma\'a halib?" (مع حليب؟) — With milk?</p><p>Numbers 1–10: wahid, ithnain, thalatha, arba'a, khamsa, sitta, sab'a, thamanya, tis'a, ashra. Always confirm orders by repeating them back in Arabic.</p>`,
-       note:'Confirming orders in Arabic ("Idhan, wahid latte sakhun?") shows professionalism and reduces errors.'}
-    ]},
-    {title:'Handling Situations Professionally', lessons:[
-      {id:'al3', title:'Complaints, apologies and escalation', dur:'12:10', preview:false, type:'video',
-       content:`<p>"Ana asif" (أنا آسف — m) / "Ana asifa" (أنا آسفة — f) — I'm sorry. "Sa nuslihu hatha" (سنصلح هذا) — We will fix this. "Law samaht, intathir laththa" (لو سمحت، انتظر لحظة) — Please wait a moment.</p><p>"Hadir" (حاضر — Ready, of course) de-escalates tension instantly by signalling compliance and respect.</p>`,
-       note:'Never argue. Escalate unresolved complaints to your supervisor rather than guessing. Document every complaint.'},
-      {id:'al4', title:'Emergency and safety phrases', dur:'8:45', preview:false, type:'video',
-       content:`<p>"Musa'ada!" (مساعدة!) — Help! "Ittasil bi al-is'af!" — Call an ambulance! "Al-nar!" (النار!) — Fire! "Al-kharij" (الخارج) — The exit. Emergency number in KSA: 911.</p><p>All workers must know emergency evacuation routes on their first day. Know your supervisor's number and the building's assembly point.</p>`,
-       note:'Post emergency numbers visibly at your workstation: 911 is the unified KSA emergency number for police, ambulance, and fire.'}
-    ]},
-    {title:'Numbers, Prices and the Final Exam', lessons:[
-      {id:'al5', title:'Numbers, prices and receipts in Arabic', dur:'11:30', preview:false, type:'video',
-       content:`<p>Riyal (ريال) is the currency. "Bi-kam hadha?" (بكم هذا؟) — How much? "Ithna ashar riyal" — 12 riyals. Giving change: "Hadha al-baqiya" (هذا الباقي) — Here's your change. "Hal turid al-fatoura?" (هل تريد الفاتورة؟) — Would you like the receipt? SFDA requires every transaction to produce a receipt.</p>`,
-       note:'Always issue a receipt — it is legally required in KSA and part of SFDA compliance.'},
-      {id:'al6', title:'Arabic Hospitality Final Exam', dur:'2:00', preview:false, type:'quiz',
-       content:'Test your Arabic hospitality knowledge.'}
-    ]}
-  ],
-  quizzes:[
-    {q:'How do you say "Welcome" to a customer in Arabic?', opts:['Shukran','Ahlan wa sahlan','Ma\'a salaama','Inshallah'], ans:1, exp:'"Ahlan wa sahlan" (أهلاً وسهلاً) is the warm welcome greeting for guests and customers.'},
-    {q:'What does "Hadir" (حاضر) communicate?', opts:['I don\'t know','Ready, of course — compliance and respect','Please wait','Thank you'], ans:1, exp:'"Hadir" signals readiness and compliance — it de-escalates tension professionally.'},
-    {q:'What is the emergency number in KSA?', opts:['999','112','911','119'], ans:2, exp:'911 is the unified emergency number in Saudi Arabia for police, ambulance, and fire.'},
-    {q:'What does SFDA require after every transaction?', opts:['A signature','A receipt','A loyalty stamp','An ID check'], ans:1, exp:'SFDA regulations require a receipt to be issued for every transaction. This is a legal requirement.'}
-  ]
-},
-{
-  id:'frontliner', title:'Front Liner Excellence',
-  track:'Service', hours:20, icon:'🌟', level:'Intermediate',
-  rating:4.7, reviews:650, students:2400,
-  tagline:'Customer Journey · Upselling · Vision 2030 Service Standards',
-  about:`Customer journey mastery, natural upselling techniques, and Saudi hospitality standards for premium F&amp;B and hotel roles. Saudi Vision 2030 rates hospitality workers — this course prepares you to score at the top.`,
-  sections:[
-    {title:'Saudi Service Excellence', lessons:[
-      {id:'fl1', title:'Vision 2030 service ratings explained', dur:'11:30', preview:true, type:'video',
-       content:`<p>Saudi Vision 2030 hospitality benchmarks evaluate staff on: <strong>appearance</strong>, <strong>response time</strong> (under 2 minutes), <strong>Arabic greeting</strong>, <strong>complaint resolution</strong>, and <strong>product knowledge</strong>.</p><ul><li>Mystery shoppers operate in all major chains</li><li>Treat every customer as a potential evaluator</li><li>Standing to greet VIP guests is expected</li><li>Never rush a customer — Saudi dining culture values time</li></ul>`,
-       note:'Every customer interaction is a potential Vision 2030 rating data point.'},
-      {id:'fl2', title:'Natural upselling without pressure', dur:'13:20', preview:false, type:'video',
-       content:`<p>Effective upselling never feels pushy — it feels helpful. Key techniques:</p><ul><li>Suggestion sell: "Our signature blend is exceptional today."</li><li>Social proof: "Many of our regulars pair this with a croissant."</li><li>Size upgrade: always present medium or large first</li><li>Combo framing: "Our breakfast set saves you SAR 8 and includes X."</li></ul><p>Target 15–20% add-on revenue per transaction. Track your personal upsell rate weekly.</p>`,
-       note:'Every upsell should feel like a helpful recommendation, not a sales push.'},
-      {id:'fl3', title:'Conflict resolution and de-escalation', dur:'10:45', preview:false, type:'video',
-       content:`<p>Three-step approach: (1) <strong>Acknowledge</strong> — "I completely understand your frustration." Never say "but" after an apology. (2) <strong>Apologise</strong> — "I'm truly sorry this happened." Own the experience. (3) <strong>Act</strong> — "Let me fix this right now." Offer a concrete solution within your authority.</p><p>In Saudi culture, never embarrass a customer in front of others — handle complaints discreetly. Document every complaint for the supervisor's log.</p>`,
-       note:'Escalate beyond your authority level immediately. Never guess at a solution you cannot guarantee.'}
-    ]},
-    {title:'Final Exam', lessons:[
-      {id:'fl4', title:'Front Liner Final Exam', dur:'2:00', preview:false, type:'quiz',
-       content:'Test your service knowledge.'}
-    ]}
-  ],
-  quizzes:[
-    {q:'What is the target greeting response time in Vision 2030 standards?', opts:['5 minutes','2 minutes','30 seconds','10 minutes'], ans:1, exp:'Vision 2030 benchmarks require greeting within 2 minutes of customer arrival.'},
-    {q:'Which upselling phrase uses social proof?', opts:['"Would you like a large instead?"','"Many of our regulars add a croissant"','"This is our most expensive option"','"You should try everything"'], ans:1, exp:'Social proof leverages community behaviour to make the upsell feel natural and helpful.'},
-    {q:'In de-escalation, what should NEVER follow an apology?', opts:['A solution offer','The word "but"','Eye contact','A concrete action'], ans:1, exp:'"But" immediately invalidates an apology and escalates conflict. Always follow with a solution, never a contradiction.'}
-  ]
-},
-{
-  id:'workplace', title:'GCC Workplace Readiness',
-  track:'Culture', hours:10, icon:'🏢', level:'Foundational',
-  rating:4.8, reviews:920, students:4100,
-  tagline:'KSA Labour Law · Your Rights · Day 1 Readiness',
-  about:`Navigate Saudi workplace culture, understand your full legal rights, and master safety protocols for Day 1 success. Designed specifically for expatriate workers arriving in the GCC with no prior Saudi work experience.`,
-  sections:[
-    {title:'Your Legal Rights in Saudi Arabia', lessons:[
-      {id:'wk1', title:'KSA Labour Law essentials for expat workers', dur:'16:40', preview:true, type:'video',
-       content:`<p>Saudi Labour Law (Royal Decree M/51) covers all expatriate workers. Key rights:</p><ul><li>Maximum <strong>8 hours/day</strong>, 48 hours/week</li><li><strong>Overtime at 150%</strong> of basic wage</li><li><strong>21 days annual leave</strong> (30 days after 5 years)</li><li><strong>End-of-service gratuity</strong> — half month per year for first 5 years, full month thereafter</li><li>90-day probation (extendable to 180)</li><li>Report violations to MHRSD (Ministry of Human Resources)</li></ul>`,
-       note:'Never sign documents you don\'t understand. Request translation — this is your legal right as an expatriate worker.'},
-      {id:'wk2', title:'Workplace safety and your rights on site', dur:'12:20', preview:false, type:'video',
-       content:`<p>You have the right to a safe workplace. Key protections:</p><ul><li>PPE provided <strong>free</strong> by employer</li><li>Right to refuse unsafe work without penalty</li><li>If injured: report immediately, document everything, seek treatment, report to GOSI</li><li>GOSI (General Organization for Social Insurance) handles work injury claims</li></ul>`,
-       note:'GOSI registration is mandatory for all workers in KSA. Ensure your employer registers you within 30 days of starting.'}
-    ]},
-    {title:'Final Exam', lessons:[
-      {id:'wk3', title:'Workplace Readiness Final Exam', dur:'2:00', preview:false, type:'quiz',
-       content:'Test your KSA labour law and workplace rights knowledge.'}
-    ]}
-  ],
-  quizzes:[
-    {q:'What is the maximum regular working hours per week under Saudi Labour Law?', opts:['40 hours','48 hours','60 hours','56 hours'], ans:1, exp:'Saudi Labour Law mandates maximum 48 hours/week — 8 hours per day.'},
-    {q:'What is the overtime pay rate in Saudi Arabia?', opts:['110% of basic wage','125% of basic wage','150% of basic wage','200% of basic wage'], ans:2, exp:'Overtime must be paid at 150% of the basic wage rate under Saudi Labour Law.'},
-    {q:'Which organisation handles work injury claims in KSA?', opts:['SFDA','HRDF','GOSI','MHRSD'], ans:2, exp:'GOSI (General Organization for Social Insurance) handles work injury claims and worker compensation.'}
-  ]
-}
-];
+  });
+});
 
-const WORKERS=[
-  {id:'W001',name:'Farhan Ahmed',country:'Bangladesh',email:'farhan@email.com',status:'active',business:'Al-Fares Café',joined:'2026-01-15',courses:['barista','arabic']},
-  {id:'W002',name:'Priya Sharma',country:'India',email:'priya@email.com',status:'certified',business:'Independent',joined:'2026-01-18',courses:['frontliner']},
-  {id:'W003',name:'Babu Tamang',country:'Nepal',email:'babu@email.com',status:'active',business:'Riyadh Hospitality',joined:'2026-02-01',courses:['workplace']},
-  {id:'W004',name:'Maria Santos',country:'Philippines',email:'maria@email.com',status:'active',business:'Al-Fares Café',joined:'2026-01-22',courses:['barista','frontliner']},
-  {id:'W005',name:'Rajesh Kumar',country:'India',email:'rajesh@email.com',status:'pending',business:'Independent',joined:'2026-02-10',courses:['workplace']},
-  {id:'W006',name:'Arif Hossain',country:'Bangladesh',email:'arif@email.com',status:'active',business:'Vision Coffee',joined:'2026-02-05',courses:['barista']}
-];
-const BUSINESSES=[
-  {id:'B001',name:'Al-Fares Café',type:'Coffee Shop',workers:12,active:10,city:'Riyadh',enrolled:8,completed:22,logo:'AF'},
-  {id:'B002',name:'Riyadh Hospitality Group',type:'Hotel Chain',workers:45,active:42,city:'Riyadh',enrolled:31,completed:67,logo:'RH'},
-  {id:'B003',name:'Vision Coffee Co.',type:'Coffee Chain',workers:23,active:21,city:'Jeddah',enrolled:18,completed:34,logo:'VC'},
-  {id:'B004',name:'Saudi Agency Partners',type:'Recruitment',workers:8,active:7,city:'Dammam',enrolled:6,completed:18,logo:'SA'}
-];
-const CHART=[12,19,15,28,24,33,29,41,38,45,52,48];
-const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const COACH_REPLIES=[
-  "ممتاز! (Mumtaz — Excellent!) Now practice: a customer says \"أنا أريد قهوة عربية من فضلك\" — how do you confirm in Arabic?",
-  "جيد جداً! (Jayyid jiddan — Very good!) Build a full apology: \"أنا آسف\" + \"سنصلح هذا\". A customer received the wrong order — what do you say?",
-  "You're building real fluency! 🌟 Saudi customers deeply appreciate the effort. Try: \"هل تريد شيء آخر؟\" (Hal turid shay akhar? — Anything else?)",
-  "شاطر! (Shatir — Well done!) \"لو سمحت\" (Law samaht — Please) combined with \"انتظر لحظة\" (wait a moment) — practice asking a customer to wait politely.",
-  "Excellent progress! Practice the full welcome flow: enter → أهلاً وسهلاً → seat → offer Qahwa → take order → confirm → شكراً جزيلاً (thank you very much)."
-];
+// Nav hide on scroll down, show on scroll up
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  const y = window.scrollY;
+  if (y > lastY && y > 100) {
+    nav.style.transform = 'translateY(-100%)';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastY = y;
+}, { passive: true });
 
-// ═══════════════════════════════════
-// STATE
-// ═══════════════════════════════════
-const S={
-  user:null, role:'worker',
-  enrollments:{}, // cid→{lessonsDone:{lid:true}, quizResults:{qi:bool}, quizIdx:0, quizAnswers:{}, showResults:false}
-  playerCourse:null, playerLesson:null,
-  chatIdx:0, lessonTimer:null, timerSec:0
-};
+// Form submission
+async function handleSubmit() {
+  const name  = document.getElementById('fn').value.trim();
+  const email = document.getElementById('fe').value.trim();
+  const co    = document.getElementById('fc').value.trim();
+  const role  = document.getElementById('fr').value;
+  const msg   = document.getElementById('fm').value.trim();
+  const err   = document.getElementById('ferr');
 
-function allLessons(cid){
-  const c=COURSES.find(x=>x.id===cid);
-  return c?c.sections.flatMap(s=>s.lessons):[];
-}
-function calcPct(cid){
-  const e=S.enrollments[cid]; if(!e)return 0;
-  const c=COURSES.find(x=>x.id===cid); if(!c)return 0;
-  const all=allLessons(cid);
-  const done=all.filter(l=>e.lessonsDone[l.id]).length;
-  const qTotal=c.quizzes.length;
-  const qCorrect=c.quizzes.filter((q,i)=>e.quizResults[i]===true).length;
-  return Math.min(100,Math.round((done/Math.max(all.length,1))*70+(qCorrect/Math.max(qTotal,1))*30));
-}
-function markDone(cid,lid){if(S.enrollments[cid])S.enrollments[cid].lessonsDone[lid]=true;}
-function recordQ(cid,qi,ok){if(S.enrollments[cid])S.enrollments[cid].quizResults[qi]=ok;}
-
-// ── AUTH ──
-function setRole(r){S.role=r;document.querySelectorAll('.rb').forEach((b,i)=>b.classList.toggle('active',['worker','business','admin'][i]===r));document.getElementById('wk-xtra').style.display=r==='worker'?'block':'none';document.getElementById('biz-xtra').style.display=r==='business'?'block':'none';}
-function toggleAuth(){const li=document.getElementById('login-form'),re=document.getElementById('reg-form'),isL=li.style.display!=='none';li.style.display=isL?'none':'block';re.style.display=isL?'block':'none';document.querySelector('.afw h2').textContent=isL?'Create account':'Welcome back';document.querySelector('.afw .lead').textContent=isL?'Join SkillBridge to start your GCC journey.':'Sign in to continue your certification journey.';}
-function doLogin(){const em=document.getElementById('li-email').value.trim();if(!em){showToast('Enter your email','err');return;}const d={'admin@skillbridge.sa':{name:'Platform Admin',role:'admin',email:'admin@skillbridge.sa'},'business@example.com':{name:'Al-Fares Café',role:'business',email:'business@example.com'},'worker@example.com':{name:'Mohammad Rahman',role:'worker',email:'worker@example.com',country:'Bangladesh'}};const u=d[em]||{name:em.split('@')[0]||'User',role:S.role,email:em};u.role=S.role;S.user=u;launchApp();}
-function doRegister(){const fn=document.getElementById('rg-first').value.trim(),ln=document.getElementById('rg-last').value.trim(),em=document.getElementById('rg-email').value.trim();if(!fn||!em){showToast('Fill required fields','err');return;}S.user={name:`${fn} ${ln}`.trim(),email:em,role:S.role,country:S.role==='worker'?(document.getElementById('rg-country').value||''):'',biz:S.role==='business'?(document.getElementById('rg-biz')?.value||''):''};showToast(`Welcome, ${fn}! 🎉`,'ok');launchApp();}
-function quickDemo(r){const m={worker:{name:'Mohammad Rahman',role:'worker',email:'worker@example.com',country:'Bangladesh'},business:{name:'Al-Fares Café',role:'business',email:'business@example.com'},admin:{name:'Platform Admin',role:'admin',email:'admin@skillbridge.sa'}};S.role=r;S.user=m[r];launchApp();}
-function doLogout(){S.user=null;S.enrollments={};document.getElementById('auth').style.display='flex';document.getElementById('app').style.display='none';}
-function launchApp(){
-  document.getElementById('auth').style.display='none';
-  document.getElementById('app').style.display='flex';
-  const u=S.user;
-  document.getElementById('sb-uname').textContent=u.name;
-  document.getElementById('sb-uemail').textContent=u.email;
-  document.getElementById('sb-av').textContent=u.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
-  document.getElementById('sb-pl').textContent={worker:'Worker Portal',business:'Business Portal',admin:'Admin Console'}[u.role];
-  buildNav(u.role); goTo('dashboard');
-  setInterval(()=>{const el=document.getElementById('tb-time');if(el)el.textContent=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});},1000);
-}
-
-// ── NAV ──
-const NAV_MAP={
-  worker:[{s:'Learning'},{p:'dashboard',ic:'📊',lb:'My Dashboard'},{p:'courses',ic:'📚',lb:'Course Catalog'},{p:'coach',ic:'🤖',lb:'AI Coach',badge:'LIVE'},{p:'certificates',ic:'🏆',lb:'My Certificates'},{s:'Account'},{p:'profile',ic:'👤',lb:'My Profile'}],
-  business:[{s:'Management'},{p:'dashboard',ic:'📊',lb:'Dashboard'},{p:'my-workers',ic:'👥',lb:'My Workers'},{p:'courses',ic:'📚',lb:'Course Catalog'},{p:'certificates',ic:'🏆',lb:'Certificates'},{s:'Account'},{p:'profile',ic:'⚙️',lb:'Settings'}],
-  admin:[{s:'Overview'},{p:'dashboard',ic:'📊',lb:'Analytics'},{p:'workers',ic:'👥',lb:'All Workers',badge:WORKERS.length},{p:'businesses',ic:'🏢',lb:'Businesses',badge:BUSINESSES.length},{s:'Platform'},{p:'courses',ic:'📚',lb:'Courses'},{p:'analytics',ic:'📈',lb:'Reports'},{p:'coach',ic:'🤖',lb:'AI Coach'}]
-};
-function buildNav(r){document.getElementById('sb-nav').innerHTML=(NAV_MAP[r]||NAV_MAP.worker).map(it=>{if(it.s)return`<div class="nav-sec">${it.s}</div>`;return`<div class="nav-item" id="nav-${it.p}" onclick="goTo('${it.p}')"><span class="ni">${it.ic}</span><span>${it.lb}</span>${it.badge?`<span class="nav-badge">${it.badge}</span>`:''}</div>`;}).join('');}
-function goTo(p){
-  // stop lesson timer
-  clearInterval(S.lessonTimer); S.lessonTimer=null; S.timerSec=0;
-  // exit player if needed
-  if(S.playerCourse){S.playerCourse=null;S.playerLesson=null;}
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
-  const pe=document.getElementById(`page-${p}`);if(pe)pe.classList.add('active');
-  const ne=document.getElementById(`nav-${p}`);if(ne)ne.classList.add('active');
-  const titles={dashboard:'Dashboard',courses:'Course Catalog',coach:'AI Language Coach',certificates:'My Certificates',workers:'Worker Management',businesses:'Business Partners',analytics:'Platform Analytics',profile:'My Profile','my-workers':'My Workers'};
-  document.getElementById('tb-title').textContent=titles[p]||p;
-  const renders={dashboard:()=>renderDash(S.user?.role),courses:renderCourses,coach:renderCoach,certificates:renderCerts,workers:renderWorkers,businesses:renderBiz,analytics:renderAnalytics,profile:renderProfile,'my-workers':renderMyWorkers};
-  if(renders[p])renders[p]();
-}
-
-// ═══════════════════════════════════
-// DASHBOARD
-// ═══════════════════════════════════
-function renderDash(r){if(r==='admin'){renderAdminDash();return;}if(r==='business'){renderBizDash();return;}renderWorkerDash();}
-function renderWorkerDash(){
-  const pg=document.getElementById('page-dashboard');
-  const ids=Object.keys(S.enrollments);
-  const enrolled=ids.length,completed=ids.filter(id=>calcPct(id)>=100).length;
-  const avgPct=enrolled?Math.round(ids.reduce((s,id)=>s+calcPct(id),0)/enrolled):0;
-  pg.innerHTML=`<div class="pg-pad">
-    <div class="wb"><div class="wb-bg"></div><div class="wb-grid"></div>
-      <div class="wb-c"><div class="wb-title">Marhaban, ${S.user.name.split(' ')[0]}.</div><div class="wb-sub">Your GCC certification journey — track progress, study, earn certificates.</div></div>
-      <div class="wb-kpi"><div class="big">${enrolled}</div><div class="lbl">Enrolled courses</div></div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card gold"><div class="s-lbl">Enrolled</div><div class="s-val">${enrolled}</div><div class="s-meta">of ${COURSES.length} available</div><div class="s-icon">📚</div></div>
-      <div class="stat-card sage"><div class="s-lbl">Completed</div><div class="s-val">${completed}</div><div class="s-meta">Certificates earned</div><div class="s-icon">🏆</div></div>
-      <div class="stat-card sky"><div class="s-lbl">Avg Progress</div><div class="s-val">${avgPct}%</div><div class="s-meta">Across all courses</div><div class="s-icon">📈</div></div>
-      <div class="stat-card"><div class="s-lbl">Lessons Done</div><div class="s-val">${ids.reduce((s,id)=>s+Object.keys(S.enrollments[id].lessonsDone).length,0)}</div><div class="s-meta">Total completed</div><div class="s-icon">✅</div></div>
-    </div>
-    <div class="two-col">
-      <div class="card">
-        <div class="card-head"><div><div class="card-title">My Courses</div><div class="card-sub">${enrolled} enrolled</div></div><button class="btn btn-sm btn-gold" onclick="goTo('courses')">Browse catalog</button></div>
-        ${enrolled===0?`<div class="empty"><div class="empty-icon">📚</div><div class="empty-title">No courses yet</div><div class="empty-sub">Start your GCC certification journey today — all courses are free for workers.</div><button class="btn btn-gold" onclick="goTo('courses')">Explore catalog →</button></div>`:
-        ids.map(cid=>{const c=COURSES.find(x=>x.id===cid),pct=calcPct(cid);return`<div class="enroll-item"><div class="ei-head"><div class="ei-title">${c?.icon} ${c?.title}</div><div class="ei-pct">${pct}%</div></div><div class="ei-meta">${c?.track} · ${c?.hours}h · ${allLessons(cid).length} lessons</div><div class="prog-track"><div class="prog-fill${pct>=100?' sage':''}" style="width:${pct}%"></div></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-sm btn-dark" onclick="openCourse('${cid}')">Continue →</button>${pct>=100?`<button class="btn btn-sm btn-gold" onclick="showCert('${(c?.title||'').replace(/'/g,'\\\'')}')" >🏆 Certificate</button>`:''}</div></div>`;}).join('')}
-      </div>
-      <div>
-        <div class="card"><div class="card-head"><div class="card-title">AI Language Coach</div></div><p style="font-size:13px;color:var(--ink3);line-height:1.65;margin-bottom:14px">Practice Arabic hospitality phrases with live AI feedback. Essential for Vision 2030 service ratings.</p><button class="btn btn-sage" onclick="goTo('coach')">Start practice →</button></div>
-        <div class="card"><div class="card-head"><div class="card-title">Recent Activity</div></div>
-          <div class="act-item"><div class="act-dot">✅</div><div><div class="act-title">Account registered</div><div class="act-time">Just now · Welcome!</div></div></div>
-          ${enrolled>0?`<div class="act-item"><div class="act-dot">📚</div><div><div class="act-title">Started ${COURSES.find(x=>x.id===ids[0])?.title}</div><div class="act-time">Today</div></div></div>`:''}
-          <div class="act-item"><div class="act-dot">🌟</div><div><div class="act-title">Profile verified</div><div class="act-time">Today · GCC-ready status active</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-}
-function renderAdminDash(){
-  const pg=document.getElementById('page-dashboard');const maxV=Math.max(...CHART);
-  pg.innerHTML=`<div class="pg-pad">
-    <div class="wb"><div class="wb-bg"></div><div class="wb-grid"></div><div class="wb-c"><div class="wb-title">Platform Command Center.</div><div class="wb-sub">Real-time overview of all workers, businesses and training activity.</div></div><div class="wb-kpi"><div class="big">${WORKERS.length}</div><div class="lbl">Registered workers</div></div></div>
-    <div class="stats-grid">
-      <div class="stat-card gold"><div class="s-lbl">Total Workers</div><div class="s-val">${WORKERS.length}</div><div class="s-meta">+3 this week</div><div class="s-icon">👥</div></div>
-      <div class="stat-card sage"><div class="s-lbl">Active Learners</div><div class="s-val">${WORKERS.filter(w=>w.status==='active').length}</div><div class="s-icon">📖</div></div>
-      <div class="stat-card sky"><div class="s-lbl">Businesses</div><div class="s-val">${BUSINESSES.length}</div><div class="s-icon">🏢</div></div>
-      <div class="stat-card"><div class="s-lbl">Certificates</div><div class="s-val">141</div><div class="s-icon">🏆</div></div>
-    </div>
-    <div class="two-col">
-      <div class="card"><div class="card-head"><div><div class="card-title">Worker Growth</div><div class="card-sub">Last 12 months</div></div></div>
-        <div class="mini-chart">${CHART.map((v,i)=>`<div class="chart-b" style="height:${Math.round((v/maxV)*100)}%" title="${MONTHS[i]}: ${v}"></div>`).join('')}</div>
-        <div class="chart-lbls">${MONTHS.map(m=>`<div class="chart-lbl">${m}</div>`).join('')}</div>
-        <div style="display:flex;gap:20px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
-          <div><div style="font-size:11px;color:var(--ink3)">Peak</div><div style="font-weight:700;font-size:13px">Oct (52)</div></div>
-          <div><div style="font-size:11px;color:var(--ink3)">Avg</div><div style="font-weight:700;font-size:13px">32/mo</div></div>
-          <div><div style="font-size:11px;color:var(--ink3)">YTD</div><div style="font-weight:700;font-size:13px">384</div></div>
-        </div>
-      </div>
-      <div class="card"><div class="card-head"><div class="card-title">Recent Registrations</div><button class="btn btn-sm btn-outline" onclick="goTo('workers')">View all</button></div>
-        ${WORKERS.slice(0,6).map(w=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
-          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold-l);border:1px solid var(--gold-m);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold-h)">${w.name.split(' ').map(n=>n[0]).join('')}</div>
-          <div style="flex:1"><div style="font-size:13px;font-weight:600">${w.name}</div><div style="font-size:11px;color:var(--ink3)">${w.country}</div></div>
-          <span class="badge ${w.status==='certified'?'bg-sage':w.status==='active'?'bg-gold':'bg-gray'}"><span class="bdot"></span>${w.status}</span>
-        </div>`).join('')}
-      </div>
-    </div>
-  </div>`;
-}
-function renderBizDash(){
-  const pg=document.getElementById('page-dashboard');const myW=WORKERS.filter(w=>w.business==='Al-Fares Café');
-  pg.innerHTML=`<div class="pg-pad">
-    <div class="wb"><div class="wb-bg"></div><div class="wb-grid"></div><div class="wb-c"><div class="wb-title">Business Dashboard.</div><div class="wb-sub">Monitor your team's training and certifications.</div></div><div class="wb-kpi"><div class="big">${myW.length}</div><div class="lbl">Active workers</div></div></div>
-    <div class="stats-grid">
-      <div class="stat-card gold"><div class="s-lbl">Workers</div><div class="s-val">${myW.length}</div><div class="s-icon">👥</div></div>
-      <div class="stat-card sage"><div class="s-lbl">Certified</div><div class="s-val">${myW.filter(w=>w.status==='certified').length}</div><div class="s-icon">🏆</div></div>
-      <div class="stat-card sky"><div class="s-lbl">In Training</div><div class="s-val">${myW.filter(w=>w.status==='active').length}</div><div class="s-icon">📖</div></div>
-      <div class="stat-card"><div class="s-lbl">Enrolment Rate</div><div class="s-val">92%</div><div class="s-icon">📊</div></div>
-    </div>
-    <div class="card"><div class="card-head"><div class="card-title">Team Overview</div><button class="btn btn-sm btn-gold" onclick="goTo('my-workers')">Manage</button></div>
-      <div class="table-wrap"><table><thead><tr><th>Worker</th><th>Country</th><th>Status</th><th>Courses</th><th>Progress</th></tr></thead>
-      <tbody>${myW.map(w=>{const avg=Math.round(Math.random()*55+35);return`<tr><td><strong>${w.name}</strong></td><td>${w.country}</td><td><span class="badge ${w.status==='certified'?'bg-sage':'bg-gold'}"><span class="bdot"></span>${w.status}</span></td><td>${w.courses.length}</td><td><div class="prog-track" style="width:100px;display:inline-block"><div class="prog-fill" style="width:${avg}%"></div></div> <span style="font-size:11px;color:var(--ink3)">${avg}%</span></td></tr>`;}).join('')}</tbody></table></div>
-    </div>
-  </div>`;
-}
-
-// ═══════════════════════════════════
-// COURSE CATALOG — with hero + about like screenshot
-// ═══════════════════════════════════
-function renderCourses(){
-  const pg=document.getElementById('page-courses');
-  pg.innerHTML=`<div class="pg-pad">
-    <div class="pg-title">Course Catalog.</div>
-    <div class="pg-sub">SCA-aligned · Vision 2030 certified · ${COURSES.length} programs available · Free for all workers</div>
-    <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap">
-      <button class="tab-btn active" style="padding:7px 16px;background:var(--ink);color:#fff;border:none;border-radius:var(--r);font-size:12px;font-weight:600;cursor:pointer" onclick="filterCat('all',this)">All Courses</button>
-      ${['Barista','Language','Service','Culture'].map(t=>`<button style="padding:7px 16px;background:var(--surf2);border:1px solid var(--border);border-radius:var(--r);font-size:12px;font-weight:600;color:var(--ink3);cursor:pointer;transition:all .15s" onclick="filterCat('${t.toLowerCase()}',this)" onmouseover="this.style.borderColor='var(--gold-b)'" onmouseout="this.style.borderColor='var(--border)'">${t}</button>`).join('')}
-    </div>
-    <div class="cat-grid" id="cat-grid">${COURSES.map(courseCatalogCard).join('')}</div>
-  </div>`;
-}
-function filterCat(t,btn){
-  document.querySelectorAll('#page-courses button').forEach(b=>{b.style.background='var(--surf2)';b.style.color='var(--ink3)';b.style.border='1px solid var(--border)';});
-  btn.style.background='var(--ink)';btn.style.color='#fff';btn.style.border='none';
-  const f=t==='all'?COURSES:COURSES.filter(c=>c.track.toLowerCase()===t);
-  document.getElementById('cat-grid').innerHTML=f.map(courseCatalogCard).join('');
-}
-function courseCatalogCard(c){
-  const enrolled=!!S.enrollments[c.id],pct=enrolled?calcPct(c.id):0;
-  return`<div class="cat-card" onclick="openCourse('${c.id}')">
-    <div class="cc-hero">
-      <div class="cc-hero-icon">${c.icon}</div>
-      ${enrolled?`<div class="cc-hero-badge"><span class="badge bg-sage" style="font-size:10px"><span class="bdot"></span>Enrolled</span></div>`:''}
-      ${enrolled?`<div class="cc-hero-pct"><div class="prog-track"><div class="prog-fill${pct>=100?' sage':''}" style="width:${pct}%"></div></div><div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:3px">${pct}% complete</div></div>`:''}
-    </div>
-    <div class="cc-body">
-      <div class="cc-track">${c.track} · ${c.hours}h · ${allLessons(c.id).length} lessons</div>
-      <div class="cc-name">${c.title}</div>
-      <div class="cc-desc">${c.tagline}</div>
-    </div>
-    <div class="cc-foot">
-      <div class="cc-meta"><div class="cc-mi">⭐ ${c.rating}</div><div class="cc-mi">${c.reviews.toLocaleString()} reviews</div><div class="cc-mi">${c.students.toLocaleString()} students</div></div>
-      ${enrolled?`<button class="btn btn-sm btn-dark" onclick="event.stopPropagation();openCourse('${c.id}')">Continue →</button>`:`<button class="btn btn-sm btn-gold" onclick="event.stopPropagation();enrollOpen('${c.id}')">Enrol Free →</button>`}
-    </div>
-  </div>`;
-}
-function enrollOpen(cid){if(!S.enrollments[cid])S.enrollments[cid]={lessonsDone:{},quizResults:{},quizIdx:0,quizAnswers:{},showResults:false};openCourse(cid);}
-
-// ═══════════════════════════════════════
-// COURSE PAGE — hero + about + curriculum list (like screenshot)
-// then player on same page
-// ═══════════════════════════════════════
-function openCourse(cid){
-  if(!S.enrollments[cid])S.enrollments[cid]={lessonsDone:{},quizResults:{},quizIdx:0,quizAnswers:{},showResults:false};
-  S.playerCourse=cid;
-  const c=COURSES.find(x=>x.id===cid);
-  const e=S.enrollments[cid];
-  // find first incomplete lesson
-  const all=allLessons(cid);
-  const firstUndone=all.find(l=>!e.lessonsDone[l.id]);
-  S.playerLesson=(firstUndone||all[0]).id;
-  renderCoursePage(cid);
-}
-
-function renderCoursePage(cid){
-  const c=COURSES.find(x=>x.id===cid);
-  const e=S.enrollments[cid];
-  const pct=calcPct(cid);
-  const all=allLessons(cid);
-  const doneCount=Object.keys(e.lessonsDone).length;
-  const pg=document.getElementById('page-courses');
-
-  let lessonCount=0;
-  const curriculumHTML=c.sections.map(sec=>{
-    const lessonsHTML=sec.lessons.map(l=>{
-      const done=!!e.lessonsDone[l.id];
-      const active=l.id===S.playerLesson;
-      const idx=lessonCount++;
-      const unlocked=l.preview||idx===0||true; // all unlocked after enrol
-      return `<div class="cl${active?' active':''}${done?' done':''}" onclick="${unlocked?`selectLesson('${cid}','${l.id}')`:''}" style="${!unlocked?'opacity:.5;cursor:not-allowed':''}">
-        <div class="cl-dot">${done?'✓':l.type==='quiz'?'📝':(active?'▶':'○')}</div>
-        <div class="cl-info">
-          <div class="cl-title">${l.title}</div>
-          <div class="cl-dur">
-            ${l.dur?`⏱ ${l.dur}`:''}
-            ${l.preview?`<span class="cl-preview-tag">Preview</span>`:''}
-            ${l.type==='quiz'?`<span class="cl-exam-tag">Exam</span>`:''}
-            ${done?`<span style="background:var(--sage-l);color:var(--sage);font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px">Completed</span>`:''}
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-    return `<div class="curr-sec-wrap">
-      <div class="curr-sec-title">${sec.title}</div>
-      ${lessonsHTML}
-    </div>`;
-  }).join('');
-
-  pg.innerHTML=`
-    <!-- COURSE HERO — like screenshot -->
-    <div style="background:linear-gradient(135deg,#0c0c0a 0%,#1a1208 40%,#0c0c0a 100%);position:relative;overflow:hidden;padding:48px 48px 40px">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 60% 50%,rgba(192,125,20,.14) 0%,transparent 65%)"></div>
-      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:32px 32px"></div>
-      <div style="position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:40px">
-        <div style="flex:1;max-width:680px">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-            <button onclick="goTo('courses')" style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);font-size:12px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer">← All Courses</button>
-            <span class="badge bg-gold" style="font-size:10px">${c.track}</span>
-            <span class="badge bg-sage" style="font-size:10px">${c.level}</span>
-          </div>
-          <div style="font-size:36px;margin-bottom:12px">${c.icon}</div>
-          <h1 style="font-family:'Lora',serif;font-size:32px;font-style:italic;color:#fff;margin-bottom:10px;line-height:1.25">${c.title}</h1>
-          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px">${c.tagline}</div>
-          <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;flex-wrap:wrap">
-            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:rgba(255,255,255,.6)">⭐ <strong style="color:#fff">${c.rating}</strong> (${c.reviews.toLocaleString()} reviews)</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6)">👥 ${c.students.toLocaleString()} students enrolled</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6)">⏱ ${c.hours} hours total</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6)">📋 ${all.length} lessons</div>
-          </div>
-          ${pct>0?`<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:12px;color:rgba(255,255,255,.4)">Your progress</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--gold)">${pct}%</span></div><div style="background:rgba(255,255,255,.1);height:6px;border-radius:4px;overflow:hidden"><div style="height:100%;background:var(--gold);width:${pct}%;transition:width .5s;border-radius:4px"></div></div></div>`:''}
-        </div>
-        <div style="flex-shrink:0;width:260px">
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r2);padding:24px;text-align:center">
-            <div style="font-size:56px;margin-bottom:12px">${c.icon}</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px;line-height:1.5">Free for all workers<br>Digital certificate included</div>
-            <button class="btn btn-gold" style="width:100%;padding:13px;font-size:13px" onclick="selectLesson('${cid}','${S.playerLesson}')">${doneCount>0?'▶ Continue Learning':'▶ Start Learning'}</button>
-            <div style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.25);line-height:1.6">SCA-Aligned · Vision 2030 Certified<br>QR-Verified Digital Certificate</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- COURSE CONTENT — two col: about + curriculum -->
-    <div style="display:grid;grid-template-columns:1fr 360px;gap:0;background:var(--bg)">
-      <!-- LEFT: about + active lesson -->
-      <div style="padding:32px;border-right:1px solid var(--border);min-height:500px">
-        ${S.playerLesson?`<div id="lesson-panel"></div>`:`<div style="padding:40px 0;text-align:center;color:var(--ink3)">Select a lesson to begin</div>`}
-      </div>
-      <!-- RIGHT: curriculum list -->
-      <div style="background:var(--surf);border-left:1px solid var(--border)">
-        <div class="curr-head">
-          <div class="curr-head-title">Course Curriculum</div>
-          <div class="curr-head-meta">${doneCount}/${all.length} lessons completed · ${pct}% done</div>
-        </div>
-        ${curriculumHTML}
-      </div>
-    </div>
-  `;
-
-  // render active lesson
-  if(S.playerLesson) renderLessonPanel(cid,S.playerLesson);
-}
-
-function selectLesson(cid,lid){
-  S.playerLesson=lid;
-  clearInterval(S.lessonTimer);S.lessonTimer=null;S.timerSec=0;
-  renderCoursePage(cid);
-}
-
-function renderLessonPanel(cid,lid){
-  const c=COURSES.find(x=>x.id===cid);
-  const e=S.enrollments[cid];
-  const l=allLessons(cid).find(x=>x.id===lid);
-  const panel=document.getElementById('lesson-panel');
-  if(!panel||!l)return;
-
-  if(l.type==='quiz'){renderQuizPanel(cid,lid);return;}
-
-  const done=!!e.lessonsDone[lid];
-  const all=allLessons(cid);
-  const idx=all.findIndex(x=>x.id===lid);
-  const prev=all[idx-1],next=all[idx+1];
-
-  panel.innerHTML=`
-    <!-- VIDEO BOX -->
-    <div style="background:var(--ink);border-radius:var(--r2);overflow:hidden;margin-bottom:24px;position:relative">
-      <div style="min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;position:relative">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(192,125,20,.12) 0%,transparent 70%)"></div>
-        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:24px 24px"></div>
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="font-size:52px;margin-bottom:10px;animation:br 3s ease-in-out infinite;display:inline-block">${c.icon}</div>
-          <div style="font-family:'Lora',serif;font-size:18px;font-style:italic;color:#fff;margin-bottom:4px;max-width:500px;line-height:1.35">${l.title}</div>
-          ${l.dur?`<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:16px">⏱ ${l.dur}</div>`:'<div style="height:16px"></div>'}
-          <div id="vbox-state">
-            ${done?`<div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(45,106,82,.2);border:1px solid rgba(168,212,192,.3);border-radius:6px;font-size:13px;color:#a8d4c0;font-weight:600">✓ Lesson completed</div>`:`<button onclick="startLessonTimer('${cid}','${lid}')" style="width:52px;height:52px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:20px;color:#fff;transition:all .2s;display:inline-flex;align-items:center;justify-content:center" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">▶</button>`}
-          </div>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08)"><div id="vbox-bar" style="height:100%;background:var(--gold);width:${done?100:0}%;transition:width .5s linear;border-radius:4px"></div></div>
-      </div>
-    </div>
-
-    <!-- LESSON META -->
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)">
-      <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--ink3)">⏱ ${l.dur||'Short'}</div>
-      ${l.preview?`<span class="badge bg-sky"><span class="bdot"></span>Free Preview</span>`:'<span class="badge bg-gold"><span class="bdot"></span>Enrolled</span>'}
-      ${done?`<span class="badge bg-sage"><span class="bdot"></span>Completed</span>`:''}
-    </div>
-
-    <!-- LESSON CONTENT -->
-    <div style="font-size:14px;color:var(--ink2);line-height:1.82;margin-bottom:20px">${l.content}</div>
-    ${l.note?`<div style="background:var(--gold-l);border:1px solid var(--gold-b);border-left:3px solid var(--gold);border-radius:var(--r);padding:13px 16px;margin-bottom:20px;font-size:13px;color:var(--ink2);line-height:1.6"><strong>💡 Pro tip:</strong> ${l.note}</div>`:''}
-    ${!done?`<div style="margin-bottom:20px"><button class="btn btn-gold" onclick="completeLesson('${cid}','${lid}')">✓ Mark as Complete</button></div>`:''}
-
-    <!-- NAV BUTTONS -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border)">
-      ${prev?`<button class="btn btn-outline btn-sm" onclick="selectLesson('${cid}','${prev.id}')">← ${prev.title.substring(0,30)}…</button>`:`<div></div>`}
-      ${next?`<button class="btn btn-dark btn-sm" onclick="selectLesson('${cid}','${next.id}')">Next: ${next.title.substring(0,25)}… →</button>`:`<button class="btn btn-gold btn-sm" onclick="showCert('${c.title.replace(/'/g,"\\'")}')">🏆 Get Certificate</button>`}
-    </div>
-  `;
-}
-
-let timerInterval=null;
-function startLessonTimer(cid,lid){
-  const l=allLessons(cid).find(x=>x.id==lid);
-  const vs=document.getElementById('vbox-state');
-  
-  // Lesson 1 of Barista — real YouTube video
-  if(cid==='barista' && (lid==='l1' || lid==='l0')){
-    if(vs) vs.innerHTML=`
-      <div style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:8px;overflow:hidden;">
-        <iframe 
-          src="https://www.youtube.com/embed/Oqq4jY4Ke6s?autoplay=1&rel=0&modestbranding=1"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-          allow="autoplay; fullscreen"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div style="margin-top:12px;text-align:center">
-        <button class="btn btn-gold" onclick="completeLesson('${cid}','${lid}')">
-          ✓ Mark as Complete
-        </button>
-      </div>`;
-   return;
+  err.style.display = 'none';
+  if (!name || !email || !email.includes('@')) {
+    err.style.display = 'block';
+    err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
   }
 
-  // All other lessons — keep existing timer
-  S.timerSec=0;clearInterval(timerInterval);
-  const parts=l?.dur?.split(':');
-  const totalSec=parts&&parts.length==2?parseInt(parts[0])*60+parseInt(parts[1]):60;
-  if(vs)vs.innerHTML=`<div style="text-align:center"><div id="lesson-timer" style="font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:700;color:var(--gold)">${l?.dur||'Short'}</div><div style="font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.2em;text-transform:uppercase;margin-top:4px">Duration</div></div>`;
-  timerInterval=setInterval(()=>{
-    S.timerSec++;
-    const tEl=document.getElementById('lesson-timer');
-    const bEl=document.getElementById('vbox-bar');
-    const rem=Math.max(0,totalSec-S.timerSec);
-    const mm=String(Math.floor(rem/60)).padStart(2,'0');
-    const ss=String(rem%60).padStart(2,'0');
-    if(tEl)tEl.textContent=`${mm}:${ss}`;
-    if(bEl)bEl.style.width=`${Math.min(100,(S.timerSec/totalSec)*100)}%`;
-    if(rem===0){clearInterval(timerInterval);completeLesson(cid,lid);}
-  },1000);
-}
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
 
-function completeLesson(cid,lid){
-  clearInterval(timerInterval);markDone(cid,lid);
-  showToast('Lesson completed! Progress updated ✅','ok');
-  // auto-advance to next
-  const all=allLessons(cid);const idx=all.findIndex(x=>x.id===lid);
-  const next=all[idx+1];
-  if(next){S.playerLesson=next.id;}
-  renderCoursePage(cid);
-}
-
-// ── QUIZ PANEL ──
-function renderQuizPanel(cid,lid){
-  const c=COURSES.find(x=>x.id===cid);
-  const e=S.enrollments[cid];
-  const panel=document.getElementById('lesson-panel');
-  if(!panel)return;
-
-  if(e.showResults){
-    const correct=c.quizzes.filter((q,i)=>e.quizResults[i]===true).length;
-    const total=c.quizzes.length;
-    const score=Math.round(correct/total*100);
-    const pct=calcPct(cid);
-    if(!e.lessonsDone[lid])markDone(cid,lid);
-    panel.innerHTML=`<div style="text-align:center;padding:28px 0">
-      <div style="width:110px;height:110px;border-radius:50%;background:var(--gold-l);border:4px solid var(--gold-b);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 18px">
-        <div style="font-size:30px;font-weight:800;color:var(--gold);line-height:1">${score}%</div>
-        <div style="font-size:11px;color:var(--ink3)">${correct}/${total}</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:6px">${score>=70?'🎉 Congratulations! You passed.':score>=50?'👍 Good effort — review and retry.':'📖 Study the material and retry.'}</div>
-      <div style="font-size:13px;color:var(--ink3);margin-bottom:20px">Course progress: <strong>${pct}%</strong></div>
-      ${pct>=100?`<div style="background:var(--gold-l);border:1px solid var(--gold-b);border-radius:var(--r);padding:18px;margin-bottom:20px"><div style="font-size:15px;font-weight:700;color:var(--gold-h);margin-bottom:4px">🏆 Course Complete!</div><div style="font-size:12px;color:var(--ink3)">Your certificate is ready to download.</div><button class="btn btn-gold" style="margin-top:12px" onclick="showCert('${c.title.replace(/'/g,"\\'")}')">View Certificate →</button></div>`:''}
-      <div style="display:flex;gap:10px;justify-content:center"><button class="btn btn-outline" onclick="resetQuiz('${cid}','${lid}')">Retry Exam</button><button class="btn btn-ghost" onclick="goTo('courses')">Back to Catalog</button></div>
-    </div>`;
-    renderCoursePage(cid);return;
+  try {
+    // Replace this URL with your Google Apps Script deployment URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxw1-0fM9-5pX4F8QykpxxpCD0HDgtV9AxRLI-rVD9QSbtFSfoJcXZphUenNze1lEXd/exec';
+    if (GOOGLE_SCRIPT_URL) {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company: co, role, message: msg, source: 'company-profile-v3' })
+      });
+    }
+    document.getElementById('cform').style.display = 'none';
+    document.getElementById('fok').style.display = 'block';
+    showToast('Message sent. We will be in touch soon.', 'ok');
+  } catch (e) {
+    btn.textContent = 'Send message →';
+    btn.disabled = false;
+    showToast('Something went wrong. Please email us directly.', 'err');
   }
-
-  const qi=e.quizIdx||0;
-  const q=c.quizzes[qi];
-  const answered=e.quizAnswers?.[qi];
-
-  panel.innerHTML=`
-    <div style="background:var(--surf2);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:22px">
-      <div style="font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Final Exam · ${c.title}</div>
-      <div style="font-family:'Lora',serif;font-size:18px;color:var(--ink);margin-bottom:4px">Test Your Knowledge</div>
-      <div style="font-size:12px;color:var(--ink3)">Score 70% or above to earn your certificate. ${c.quizzes.length} questions total.</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;padding:12px 16px;background:var(--surf);border-radius:var(--r);border:1px solid var(--border)">
-      <span style="font-size:12px;color:var(--ink3)">Question ${qi+1} of ${c.quizzes.length}</span>
-      <div style="display:flex;gap:5px;margin-left:auto">
-        ${c.quizzes.map((_,i)=>`<div style="width:10px;height:10px;border-radius:50%;background:${i<qi?(e.quizResults[i]?'var(--sage)':'var(--terra)'):i===qi?'var(--gold)':'var(--border2)'};${i===qi?'box-shadow:0 0 0 3px var(--gold-l)':''}"></div>`).join('')}
-      </div>
-    </div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Question ${qi+1}</div>
-    <div style="font-size:16px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:18px">${q.q}</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
-      ${q.opts.map((opt,i)=>{
-        let cls='';let bg='var(--surf)';let brd='var(--border)';let clr='var(--ink2)';
-        if(answered!==undefined){
-          if(i===q.ans){bg='var(--sage-l)';brd='var(--sage)';clr='var(--sage-h)';}
-          else if(i===answered){bg='var(--terra-l)';brd='var(--terra)';clr='var(--terra)';}
-        }
-        return`<div onclick="${answered===undefined?`answerQuiz('${cid}',${qi},${i})`:''}" style="display:flex;align-items:center;gap:13px;padding:13px 18px;border:1.5px solid ${brd};border-radius:var(--r);cursor:${answered===undefined?'pointer':'default'};background:${bg};color:${clr};font-size:14px;transition:all .15s" ${answered===undefined?`onmouseover="this.style.borderColor='var(--gold-b)';this.style.background='var(--gold-l)'" onmouseout="this.style.borderColor='${brd}';this.style.background='${bg}'"`:''}>
-          <div style="width:28px;height:28px;border-radius:50%;background:${answered!==undefined&&i===q.ans?'var(--sage-l)':answered!==undefined&&i===answered?'var(--terra-l)':'var(--surf3)'};border:1.5px solid ${answered!==undefined&&i===q.ans?'var(--sage-m)':answered!==undefined&&i===answered?'#f5c1b0':'var(--border2)'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:${answered!==undefined&&i===q.ans?'var(--sage)':answered!==undefined&&i===answered?'var(--terra)':'var(--ink3)'}">
-            ${String.fromCharCode(65+i)}
-          </div>
-          <span>${opt}</span>
-        </div>`;
-      }).join('')}
-    </div>
-    ${answered!==undefined?`<div style="padding:13px 16px;border-radius:var(--r);font-size:13px;font-weight:500;line-height:1.6;margin-bottom:16px;${answered===q.ans?'background:var(--sage-l);color:var(--sage-h);border:1px solid var(--sage-m)':'background:var(--terra-l);color:var(--terra);border:1px solid #f5c1b0'}">${answered===q.ans?'✅ Correct!':'❌ Incorrect.'} ${q.exp}</div>`:''}
-    <div style="display:flex;justify-content:flex-end;gap:10px">
-      ${answered!==undefined&&qi<c.quizzes.length-1?`<button class="btn btn-dark" onclick="nextQuestion('${cid}','${lid}')">Next Question →</button>`:''}
-      ${answered!==undefined&&qi===c.quizzes.length-1?`<button class="btn btn-gold" onclick="finishQuiz('${cid}','${lid}')">See Results →</button>`:''}
-      ${answered===undefined?`<div style="font-size:12px;color:var(--ink3);align-self:center">Select an answer to continue</div>`:''}
-    </div>
-  `;
 }
 
-function answerQuiz(cid,qi,ai){
-  const c=COURSES.find(x=>x.id===cid);
-  const e=S.enrollments[cid];
-  if(!e.quizAnswers)e.quizAnswers={};
-  e.quizAnswers[qi]=ai;
-  recordQ(cid,qi,ai===c.quizzes[qi].ans);
-  renderQuizPanel(cid,S.playerLesson);
+function showToast(msg, type = 'ok') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `show ${type}`;
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.className = ''; }, 4500);
 }
-function nextQuestion(cid,lid){
-  const e=S.enrollments[cid];
-  e.quizIdx=(e.quizIdx||0)+1;
-  if(!e.quizAnswers)e.quizAnswers={};
-  renderQuizPanel(cid,lid);
-}
-function finishQuiz(cid,lid){
-  const e=S.enrollments[cid];
-  e.showResults=true;
-  renderQuizPanel(cid,lid);
-}
-function resetQuiz(cid,lid){
-  const e=S.enrollments[cid];
-  e.quizIdx=0;e.quizAnswers={};e.showResults=false;e.quizResults={};
-  renderQuizPanel(cid,lid);
-}
-
-// ═══════════════════════════════════
-// AI COACH
-// ═══════════════════════════════════
-function renderCoach(){
-  const pg=document.getElementById('page-coach');
-  pg.innerHTML=`<div class="coach-layout">
-    <div class="chat-shell">
-      <div class="chat-top"><div class="chat-av">🤖</div><div><div class="chat-av-name">SkillBridge AI Coach</div><div class="chat-av-status">Online · Ready</div></div></div>
-      <div class="chat-msgs" id="chat-msgs">
-        <div class="mw bot"><div class="m-lbl">AI Coach</div><div class="m-bubble">مرحباً! I'm your AI Language Coach. Let's practice Arabic for your GCC hospitality role. A customer just walked in — try greeting them with "أهلاً وسهلاً" (Ahlan wa sahlan — Welcome!) 🌟</div></div>
-      </div>
-      <div class="chat-in-row">
-        <input class="chat-in" id="chat-in" placeholder="Type in Arabic or English…" onkeypress="if(event.key==='Enter')sendMsg()">
-        <button class="chat-send" onclick="sendMsg()">→</button>
-      </div>
-    </div>
-    <div class="phrase-card">
-      <div class="card-title" style="margin-bottom:14px">Quick Phrases</div>
-      ${[['أهلاً وسهلاً','Ahlan wa sahlan','Welcome'],['شكراً جزيلاً','Shukran jazilan','Thank you very much'],['من فضلك','Min fadlak','Please'],['لحظة من فضلك','Lahza min fadlak','One moment please'],['أنا آسف','Ana asif',"I'm sorry (m)"],['هل تريد شيء آخر؟','Hal turid shay akhar?','Anything else?'],['كم السعر؟','Kam al-si\'r?','How much?'],['مع السلامة','Ma\'a salaama','Goodbye']].map(([ar,lat,en])=>`<div class="phrase-item" onclick="document.getElementById('chat-in').value='${ar}';document.getElementById('chat-in').focus()"><div class="phrase-ar">${ar}</div><div class="phrase-lat">${lat}</div><div class="phrase-en">${en}</div></div>`).join('')}
-    </div>
-  </div>`;
-}
-function sendMsg(){
-  const inp=document.getElementById('chat-in'),t=inp?.value.trim();if(!t)return;
-  const msgs=document.getElementById('chat-msgs');
-  msgs.innerHTML+=`<div class="mw user"><div class="m-lbl">You</div><div class="m-bubble">${t}</div></div>`;
-  inp.value='';msgs.scrollTop=msgs.scrollHeight;
-  const tid='t'+Date.now();
-  msgs.innerHTML+=`<div class="mw bot" id="${tid}"><div class="m-lbl">AI Coach</div><div class="typing-bub"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
-  msgs.scrollTop=msgs.scrollHeight;
-  setTimeout(()=>{const el=document.getElementById(tid);if(el)el.remove();const r=COACH_REPLIES[S.chatIdx%COACH_REPLIES.length];S.chatIdx++;msgs.innerHTML+=`<div class="mw bot"><div class="m-lbl">AI Coach</div><div class="m-bubble">${r}</div></div>`;msgs.scrollTop=msgs.scrollHeight;},900+Math.random()*700);
-}
-
-// ═══════════════════════════════════
-// CERTIFICATES
-// ═══════════════════════════════════
-function renderCerts(){
-  const pg=document.getElementById('page-certificates');
-  const ids=Object.keys(S.enrollments);
-  const done=ids.filter(id=>calcPct(id)>=100);
-  const inProg=ids.filter(id=>calcPct(id)<100);
-  pg.innerHTML=`<div class="pg-pad">
-    <div class="pg-title">My Certificates.</div>
-    <div class="pg-sub">Credentials recognised by Saudi Vision 2030 Human Capital Framework</div>
-    ${done.length===0?`<div class="empty"><div class="empty-icon">🏆</div><div class="empty-title">No certificates yet</div><div class="empty-sub">Complete a course and pass the final exam to earn your first GCC-recognised credential.</div><button class="btn btn-gold" onclick="goTo('courses')">Start a course →</button></div>`
-    :`<div class="three-col" style="margin-bottom:22px">${done.map(id=>{const c=COURSES.find(x=>x.id===id);return`<div style="background:var(--surf);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:var(--r2);padding:22px;transition:all .18s" onmouseover="this.style.boxShadow='var(--sh3)'" onmouseout="this.style.boxShadow='none'"><div style="font-size:30px;margin-bottom:10px">${c?.icon}</div><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px">Certified Professional</div><div style="font-size:14px;font-weight:700;margin-bottom:4px">${c?.title}</div><div style="font-size:11px;color:var(--ink3);margin-bottom:16px">${c?.track} · Vision 2030</div><button class="btn btn-gold" style="width:100%" onclick="showCert('${c?.title?.replace(/'/g,"\\'")}')">View Certificate →</button></div>`;}).join('')}</div>`}
-    ${inProg.length>0?`<div class="card"><div class="card-head"><div class="card-title">In Progress</div></div>${inProg.map(id=>{const c=COURSES.find(x=>x.id===id),pct=calcPct(id);return`<div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="font-size:22px">${c?.icon}</div><div style="flex:1"><div style="font-weight:600;margin-bottom:5px">${c?.title}</div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:3px">${pct}% · ${100-pct}% remaining</div></div><button class="btn btn-sm btn-outline" onclick="openCourse('${id}')">Continue →</button></div>`;}).join('')}</div>`:``}
-  </div>`;
-}
-
-// ═══════════════════════════════════
-// WORKERS / BUSINESSES / ANALYTICS / PROFILE / MY-WORKERS
-// ═══════════════════════════════════
-function renderWorkers(){
-  const pg=document.getElementById('page-workers');
-  pg.innerHTML=`<div class="pg-pad"><div class="pg-title">Worker Management.</div><div class="pg-sub">All registered workers on the platform</div>
-    <div class="toolbar"><input type="text" class="search-input" placeholder="Search by name or email…" oninput="filterW(this.value)"><select class="filter-sel" onchange="filterWSt(this.value)"><option value="">All statuses</option><option value="active">Active</option><option value="certified">Certified</option><option value="pending">Pending</option></select><button class="btn btn-gold" onclick="goTo('profile')">+ Add Worker</button></div>
-    <div class="card"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Country</th><th>Status</th><th>Business</th><th>Courses</th><th>Joined</th><th></th></tr></thead><tbody id="wtbody">${wRows(WORKERS)}</tbody></table></div></div>
-  </div>`;
-}
-function wRows(ws){return ws.map(w=>`<tr><td><code style="font-size:11px;color:var(--ink3)">${w.id}</code></td><td><strong>${w.name}</strong><br><span style="font-size:11px;color:var(--ink3)">${w.email}</span></td><td>${w.country}</td><td><span class="badge ${w.status==='certified'?'bg-sage':w.status==='active'?'bg-gold':'bg-gray'}"><span class="bdot"></span>${w.status}</span></td><td>${w.business}</td><td>${w.courses.length}</td><td style="font-size:11px;color:var(--ink3)">${w.joined}</td><td><button class="btn btn-xs btn-outline" onclick="showToast('Worker profile coming soon','ok')">View</button></td></tr>`).join('');}
-function filterW(q){const f=q.toLowerCase();document.getElementById('wtbody').innerHTML=wRows(WORKERS.filter(w=>w.name.toLowerCase().includes(f)||w.email.toLowerCase().includes(f)));}
-function filterWSt(s){document.getElementById('wtbody').innerHTML=wRows(s?WORKERS.filter(w=>w.status===s):WORKERS);}
-function renderBiz(){
-  const pg=document.getElementById('page-businesses');
-  pg.innerHTML=`<div class="pg-pad"><div class="pg-title">Business Partners.</div><div class="pg-sub">Organisations using SkillBridge to train their workforce</div>
-    <div class="toolbar"><input type="text" class="search-input" placeholder="Search businesses…"><button class="btn btn-gold">+ Add Business</button></div>
-    <div class="three-col">${BUSINESSES.map(b=>`<div class="biz-card"><div class="biz-top"><div class="biz-av">${b.logo}</div><div><div class="biz-name">${b.name}</div><div class="biz-type">${b.type} · ${b.city}</div></div></div><span class="badge bg-sage"><span class="bdot"></span>Active Partner</span><div class="biz-stats"><div><div class="bs-lbl">Workers</div><div class="bs-val">${b.workers}</div></div><div><div class="bs-lbl">Active</div><div class="bs-val">${b.active}</div></div><div><div class="bs-lbl">Enrolled</div><div class="bs-val">${b.enrolled}</div></div><div><div class="bs-lbl">Certs</div><div class="bs-val">${b.completed}</div></div></div><div class="prog-track"><div class="prog-fill" style="width:${Math.min(Math.round(b.completed/(b.enrolled||1)*100),100)}%"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-sm btn-outline">View Details</button><button class="btn btn-sm btn-dark">Message</button></div></div>`).join('')}</div>
-  </div>`;
-}
-function renderAnalytics(){
-  const pg=document.getElementById('page-analytics');
-  pg.innerHTML=`<div class="pg-pad"><div class="pg-title">Platform Analytics.</div><div class="pg-sub">Detailed insights across all training activity</div>
-    <div class="stats-grid">${[['Completion Rate','74%','↑ 8% this month','sage'],['Avg Time','18.4 days','Per course','sky'],['Retention','91%','Active after 30 days','gold'],['Satisfaction','4.7/5','38 reviews','']].map(([l,v,s,c])=>`<div class="stat-card ${c}"><div class="s-lbl">${l}</div><div class="s-val" style="font-size:26px">${v}</div><div class="s-meta">${s}</div></div>`).join('')}</div>
-    <div class="two-col">
-      <div class="card"><div class="card-head"><div class="card-title">Courses by Enrolment</div></div>${COURSES.map(c=>{const p=Math.round(Math.random()*55)+20;return`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)"><span style="font-size:18px">${c.icon}</span><div style="flex:1"><div style="font-size:12px;font-weight:600">${c.title}</div><div class="prog-track" style="margin-top:4px"><div class="prog-fill" style="width:${p}%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--gold)">${p}%</div></div>`}).join('')}</div>
-      <div class="card"><div class="card-head"><div class="card-title">Workers by Origin</div></div>${[['Bangladesh','🇧🇩',38],['India','🇮🇳',31],['Philippines','🇵🇭',18],['Nepal','🇳🇵',9],['Pakistan','🇵🇰',4]].map(([c,f,p])=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)"><span style="font-size:18px">${f}</span><div style="flex:1"><div style="font-size:12px;font-weight:600">${c}</div><div class="prog-track" style="margin-top:4px"><div class="prog-fill" style="width:${p}%;background:var(--sky)"></div></div></div><div style="font-size:12px;font-weight:700">${p}%</div></div>`).join('')}</div>
-    </div>
-  </div>`;
-}
-function renderProfile(){
-  const pg=document.getElementById('page-profile');const r=S.user?.role;
-  pg.innerHTML=`<div class="pg-pad"><div class="pg-title">${r==='admin'?'Add New Worker':r==='business'?'Business Settings':'My Profile'}.</div><div class="pg-sub">${r==='admin'?'Register a new worker to the platform':'Manage your account information'}</div>
-    <div class="profile-form">
-      <div class="pf-sec">Personal Information</div>
-      <div class="row2"><div class="field"><label>First name</label><input type="text" value="${S.user?.name?.split(' ')[0]||''}"></div><div class="field"><label>Last name</label><input type="text" value="${S.user?.name?.split(' ').slice(1).join(' ')||''}"></div></div>
-      <div class="field"><label>Email</label><input type="email" value="${S.user?.email||''}"></div>
-      <div class="field"><label>Phone</label><input type="tel" placeholder="+966 5x xxx xxxx"></div>
-      ${r==='worker'||r==='admin'?`<div class="pf-sec">Worker Details</div><div class="row2"><div class="field"><label>Home country</label><select>${['Bangladesh','India','Nepal','Philippines','Pakistan','Sri Lanka'].map(c=>`<option${S.user?.country===c?' selected':''}>${c}</option>`).join('')}</select></div><div class="field"><label>Language</label><select><option>English</option><option>Bengali</option><option>Hindi</option><option>Nepali</option></select></div></div><div class="row2"><div class="field"><label>Target role</label><select><option>Barista</option><option>Front Liner</option><option>General Helper</option></select></div><div class="field"><label>Departure date</label><input type="date"></div></div>`:''}
-      ${r==='business'?`<div class="pf-sec">Business</div><div class="field"><label>Business name</label><input type="text" value="${S.user?.biz||''}"></div><div class="row2"><div class="field"><label>Type</label><select><option>Coffee Shop</option><option>Restaurant</option><option>Hotel</option></select></div><div class="field"><label>City</label><select><option>Riyadh</option><option>Jeddah</option><option>Dammam</option></select></div></div>`:''}
-      <div style="display:flex;gap:10px;margin-top:20px"><button class="btn btn-gold" onclick="showToast('Profile saved! ✅','ok')">Save Changes →</button><button class="btn btn-outline" onclick="goTo('dashboard')">Cancel</button></div>
-    </div>
-  </div>`;
-}
-function renderMyWorkers(){
-  const pg=document.getElementById('page-my-workers');const myW=WORKERS.filter(w=>w.business==='Al-Fares Café');
-  pg.innerHTML=`<div class="pg-pad"><div class="pg-title">My Workers.</div><div class="pg-sub">Manage and track your team's training</div>
-    <div class="toolbar"><input type="text" class="search-input" placeholder="Search workers…"><button class="btn btn-gold" onclick="showToast('Invite link copied!','ok')">+ Invite Worker</button></div>
-    <div class="card"><div class="table-wrap"><table><thead><tr><th>Worker</th><th>Country</th><th>Courses</th><th>Progress</th><th>Status</th><th></th></tr></thead>
-    <tbody>${myW.map(w=>{const avg=Math.round(Math.random()*55+30);return`<tr><td><strong>${w.name}</strong><br><span style="font-size:11px;color:var(--ink3)">${w.email}</span></td><td>${w.country}</td><td>${w.courses.length}</td><td><div class="prog-track" style="width:100px;display:inline-block"><div class="prog-fill" style="width:${avg}%"></div></div> <span style="font-size:11px;color:var(--ink3)">${avg}%</span></td><td><span class="badge ${w.status==='certified'?'bg-sage':'bg-gold'}"><span class="bdot"></span>${w.status}</span></td><td><button class="btn btn-xs btn-outline" onclick="showToast('Detail view coming soon','ok')">View</button></td></tr>`;}).join('')}</tbody></table></div></div>
-    <div class="card"><div class="card-head"><div class="card-title">Bulk Enrol</div></div><div style="display:flex;gap:10px"><select class="filter-sel" style="flex:1">${COURSES.map(c=>`<option>${c.icon} ${c.title}</option>`).join('')}</select><button class="btn btn-gold" onclick="showToast('All workers enrolled! 📚','ok')">Enrol All →</button></div></div>
-  </div>`;
-}
-
-// ═══════════════════════════════════
-// CERT + TOAST
-// ═══════════════════════════════════
-function showCert(title){
-  document.getElementById('cert-name').textContent=S.user?.name||'Worker';
-  document.getElementById('cert-body').innerHTML=`Has successfully completed the <strong>${title}</strong> and demonstrated professional excellence in GCC hospitality standards. Recognised by the Saudi Vision 2030 Human Capital Framework.`;
-  document.getElementById('cert-date').textContent=new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
-  document.getElementById('cert-id').textContent='SBA-2026-'+Math.random().toString(36).substring(2,8).toUpperCase();
-  document.getElementById('cert-overlay').classList.add('open');
-}
-function closeCert(){document.getElementById('cert-overlay').classList.remove('open');}
-function showToast(msg,type='ok'){const el=document.getElementById('toast');el.textContent=msg;el.className=`toast ${type} vis`;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('vis'),3500);}
-
-// INIT
-setTimeout(()=>showToast('Click a demo button to explore as Worker, Business, or Admin','ok'),600);
-
 </script>
 </body>
 </html>
